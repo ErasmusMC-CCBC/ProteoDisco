@@ -62,8 +62,10 @@ contain one or multiple proteotypic fragment(s) after cleavage by a selected pro
    performAnchorCheck = FALSE
  )
  
+ ProteoDiscography.hg19 <- ProteoDisco::incorporateGenomicVariants(ProteoDiscography.hg19)
+ 
  # Results will now contain additional information about proteotypic fragments.
- ProteoDiscography.hg19 <- checkProteotypicFragments(ProteoDiscography.hg19)
+ ProteoDiscography.hg19 <- ProteoDisco::checkProteotypicFragments(ProteoDiscography.hg19)
 
 }
 \author{

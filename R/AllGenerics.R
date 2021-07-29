@@ -275,8 +275,10 @@ setGeneric("mutantTranscripts", function(x) standardGeneric("mutantTranscripts")
 #'    performAnchorCheck = FALSE
 #'  )
 #'  
+#'  ProteoDiscography.hg19 <- ProteoDisco::incorporateGenomicVariants(ProteoDiscography.hg19)
+#'  
 #'  # Results will now contain additional information about proteotypic fragments.
-#'  ProteoDiscography.hg19 <- checkProteotypicFragments(ProteoDiscography.hg19)
+#'  ProteoDiscography.hg19 <- ProteoDisco::checkProteotypicFragments(ProteoDiscography.hg19)
 #'
 #' @return {ProteoDiscography} with an additional column specifying the number of proteotypic fragments per record.
 #' @rdname checkProteotypicFragments

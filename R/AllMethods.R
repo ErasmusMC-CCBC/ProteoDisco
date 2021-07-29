@@ -376,7 +376,7 @@ setMethod('checkProteotypicFragments', 'ProteoDiscography', function(x, enzymUse
   checkmate::assertLogical(checkWithinMutantSeqs)
   
   # Check if any transcripts have been generated.
-  if(base::sum(S4Vectors::elementNROWS(mutantTranscripts(x))) == 0) stop('No transcripts to check for proteotypuic fragments! Please add / generate (mutant) transcripts first.')
+  if(base::sum(S4Vectors::elementNROWS(mutantTranscripts(x))) == 0) stop('No transcripts to check for proteotypic fragments! Please add / generate (mutant) transcripts first.')
   
   
   # Translate the TxDb. -----------------------------------------------------

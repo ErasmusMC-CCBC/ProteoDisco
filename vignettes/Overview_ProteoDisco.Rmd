@@ -15,16 +15,16 @@ output:
 ---
 
 ```{r knitr_init, echo = FALSE, cache = FALSE, results = 'hide', warning=FALSE, message=FALSE}
-library(knitr)
-library(rmdformats)
-library(plyr)
-library(dplyr)
-library(ggplot2)
-library(reshape2)
-library(scales)
-library(AnnotationDbi)
-library(BiocManager)
-library(ProteoDisco)
+suppressPackageStartupMessages(library(knitr))
+suppressPackageStartupMessages(library(rmdformats))
+suppressPackageStartupMessages(library(plyr))
+suppressPackageStartupMessages(library(dplyr))
+suppressPackageStartupMessages(library(ggplot2))
+suppressPackageStartupMessages(library(reshape2))
+suppressPackageStartupMessages(library(scales))
+suppressPackageStartupMessages(library(AnnotationDbi))
+suppressPackageStartupMessages(library(BiocManager))
+suppressPackageStartupMessages(library(ProteoDisco))
 ```
 
 ```{r setup, include = FALSE}
@@ -178,8 +178,8 @@ These pre-generated databases can simply be installed and used without further t
 
 ```{r, label = 'Generate ProteoDiscrography from GRCh37 resources', eval = TRUE, results = 'hide'}
 # If not yet installed, install the required packages.
-if(!require(BSgenome.Hsapiens.UCSC.hg19)) BiocManager::install(BSgenome.Hsapiens.UCSC.hg19)
-if(!require(TxDb.Hsapiens.UCSC.hg19.knownGene)) BiocManager::install(TxDb.Hsapiens.UCSC.hg19.knownGene)
+require(BSgenome.Hsapiens.UCSC.hg19)
+require(TxDb.Hsapiens.UCSC.hg19.knownGene)
 
 # Generate the ProteoDiscography.
 ProteoDiscography.hg19 <- ProteoDisco::generateProteoDiscography(
