@@ -4,7 +4,7 @@ date: '`r Sys.Date()`'
 author: 'Job van Riet / Wesley van de Geer'
 vignette: >
   %\VignetteIndexEntry{Overview_Proteodisco}
-  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEngine{knitr::knitr}
   %\VignetteEncoding{UTF-8}
 output:
   rmdformats::downcute:
@@ -23,7 +23,6 @@ suppressPackageStartupMessages(library(ggplot2))
 suppressPackageStartupMessages(library(reshape2))
 suppressPackageStartupMessages(library(scales))
 suppressPackageStartupMessages(library(AnnotationDbi))
-suppressPackageStartupMessages(library(BiocManager))
 suppressPackageStartupMessages(library(ProteoDisco))
 ```
 
@@ -41,7 +40,7 @@ knitr::opts_chunk$set(collapse = TRUE, comment = '#>')
 + (*Optional*) **Determining transcripts with unique proteotypic peptides.**
 4. **Review and quality control of the customized protein database.**
 5. **Output the customized protein database as FASTA.**
-+ Using the custom protein database in proteomics to detect additional protein baed on their proteotypic fragments.
++ Using the custom protein database in proteomics to detect additional protein based on their proteotypic fragments.
 
 This can be done on a step-by-step basis in which users can customize advanced options or by performing the functions with default parameters, which will generate custom protein databases suitable for most research purposes.
 
@@ -177,7 +176,7 @@ Several annotation databases and reference sequences are already available withi
 These pre-generated databases can simply be installed and used without further tweaking. For example, we can use the pre-generated *Homo sapiens* (e.g., GRCh37) transcript-annotations and genome-sequences:
 
 ```{r, label = 'Generate ProteoDiscrography from GRCh37 resources', eval = TRUE, results = 'hide'}
-# If not yet installed, install the required packages.
+# Attach the required packages.
 require(BSgenome.Hsapiens.UCSC.hg19)
 require(TxDb.Hsapiens.UCSC.hg19.knownGene)
 
@@ -220,8 +219,8 @@ To simply import all SNVs, MNVs and InDels present in VCF / MAF file(s) into the
 
 ```{r, label = 'Generate ProteoDiscrography (GRCh37) for subsequent testing', eval = TRUE, results = 'hide'}
 # Lets produce a ProteoDiscography using pre-generated (BioConductor) resources for hg19 with UCSC annotations.
-if(!require(BSgenome.Hsapiens.UCSC.hg19)) BiocManager::install(BSgenome.Hsapiens.UCSC.hg19)
-if(!require(TxDb.Hsapiens.UCSC.hg19.knownGene)) BiocManager::install(TxDb.Hsapiens.UCSC.hg19.knownGene)
+require(BSgenome.Hsapiens.UCSC.hg19)
+require(TxDb.Hsapiens.UCSC.hg19.knownGene)
 
 # Initialize the ProteoDiscography.
 ProteoDiscography.hg19 <- ProteoDisco::generateProteoDiscography(

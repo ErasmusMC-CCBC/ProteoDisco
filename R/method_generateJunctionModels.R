@@ -41,11 +41,6 @@
 #'    removeExisting = TRUE
 #'  )
 #' 
-#'  # Add to ProteoDiscography.
-#'  ProteoDiscography.hg19 <- ProteoDisco::importTranscriptSequences(
-#'    ProteoDiscography.hg19, 
-#'    transcripts = manualSeq
-#'  )
 #'  
 #'  # Or, import splice-junctions (even spanning different chromosomes) based on our format.
 #'  testSJ <- readr::read_tsv(system.file('extdata', 'validationSetSJ_hg19.txt', package = 'ProteoDisco')) %>% 
