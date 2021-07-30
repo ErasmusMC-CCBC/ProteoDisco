@@ -15,7 +15,7 @@ generateJunctionModels(
 \arguments{
 \item{ProteoDiscography}{(\link[ProteoDisco]{ProteoDiscography}): ProteoDiscography object which stores the annotation and genomic sequences.}
 
-\item{maxDistance}{(integer): Max. distance (>=0 bp) from splice-junction to nearest (or overlapping) exon in bp. 
+\item{maxDistance}{(integer): Max. distance (>=0 bp) from splice-junction to nearest (or overlapping) exon in bp.
 Setting this to high numbers will (erroneously) assign a distant exon as 'neighboring' resulting in unlikely models.
 If the SJ is beyond this distance, it will be assigned as an cryptic exon and the length of this exon is set with the [maxCrypticSize] parameter.}
 
@@ -36,7 +36,7 @@ Supplied junctions will be transformed into novel gene-models based on the neare
 of the given {ProteoDiscography}; strand-information is taken into account. If no strand-information is given, the nearest (or overlapping) known
 exon is assigned.
 
-It will derive the putative gene-model based on the assigned exons as annotated within the TxDb. 
+It will derive the putative gene-model based on the assigned exons as annotated within the TxDb.
 E.g., if matched with the second exon of geneA (+) and the fourth exon of geneB (+) it will generate the following gene-model:
 
 geneA-Exon1, geneA-Exon2, geneB-Exon4, geneB-Exon5, ...
@@ -46,46 +46,29 @@ Users can also specify the max. search-window (in bp) in which the nearest canon
 \examples{
 
  ProteoDiscography.hg19 <- ProteoDisco::generateProteoDiscography(
-   TxDb = TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene, 
+   TxDb = TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene,
    genomeSeqs = BSgenome.Hsapiens.UCSC.hg19::BSgenome.Hsapiens.UCSC.hg19
  )
- 
- # Import from file.
- ProteoDiscography.hg19 <- ProteoDisco::importSpliceJunctions(
-   ProteoDiscography = ProteoDiscography.hg19, 
-   inputSpliceJunctions = system.file('extdata', 'spliceJunctions_pyQUILTS_chr22.bed', package = 'ProteoDisco'), 
-   # (Optional) Rename samples.
-   samples = c('pyQUILTS'), 
-   # Specify that the given BED files are obtained from TopHat.
-   # Chromosomal coordinates from TopHat require additional formatting.
-   isTopHat = TRUE,
-   aggregateSamples = FALSE,
-   removeExisting = TRUE
- )
 
- 
- # Or, import splice-junctions (even spanning different chromosomes) based on our format.
- testSJ <- readr::read_tsv(system.file('extdata', 'validationSetSJ_hg19.txt', package = 'ProteoDisco')) \%>\% 
-   dplyr::select(sample, identifier, junctionA, junctionB)
- 
+ # Import splice-junctions (even spanning different chromosomes) based on our format.
+ testSJ <- readr::read_tsv(system.file('extdata', 'validationSetSJ_hg19.txt', package = 'ProteoDisco'))
+
  # Add custom SJ to ProteoDiscography.
  ProteoDiscography.hg19 <- ProteoDisco::importSpliceJunctions(
-   ProteoDiscography = ProteoDiscography.hg19, 
-   inputSpliceJunctions = testSJ, 
-   # Append to existing SJ-input.
-   removeExisting = FALSE
+   ProteoDiscography = ProteoDiscography.hg19,
+   inputSpliceJunctions = testSJ
  )
- 
+
  # Generate junction-models from non-canonical splice-junctions.
  ProteoDiscography.hg19 <- ProteoDisco::generateJunctionModels(
-   ProteoDiscography = ProteoDiscography.hg19, 
+   ProteoDiscography = ProteoDiscography.hg19,
    # Max. distance from a known exon-boundary before introducing a novel exon.
    # If an adjacent exon is found within this distance, it will shorten or elongate that exon towards the SJ.
-   maxDistance = 150, 
+   maxDistance = 150,
    # Should we skip known exon-exon junctions (in which both the acceptor and donor are located on known adjacent exons within the same transcript)
    skipCanonical = TRUE,
    # Perform on multiple threads (optional)
-   threads = 20
+   threads = 1
  )
 
 }

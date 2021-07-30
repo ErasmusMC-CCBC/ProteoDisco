@@ -450,7 +450,7 @@ To reduce the search space in subsequent MS/MS analysis, we can perform an optio
 
 Conceptually, we cleave the variant protein-sequence with the same protease as would be used in the respective MS/MS experiment (e.g. Trypsin) and compare the resulted cleaved peptides against the input TxDb (and additional databases) cleaved in the same manner and then determine unique the number of peptides which are not seen in the input TxDb (and additional database). In addition, it also checks whether the cleaved peptide does not also occur within another variant protein with *checkWithinMutantSeqs = TRUE*.
 
-```{r, label = 'Check proteotypic fragments.', eval = TRUE, results = 'hide'}
+```{r, label = 'Check proteotypic fragments.', eval = FALSE, results = 'hide'}
 # Load additional peptide sequences against which proteotypic fragments are checked.
 # In this case, load the first 100 human Swiss-Prot/Uniprot database entries.
 peptides.SwissProt <- base::textConnection(RCurl::getURL('https://www.uniprot.org/uniprot/?query=*&format=fasta&limit=100&fil=organism:%22Homo%20sapiens%20(Human)%20[9606]%22%20AND%20reviewed:yes')) %>% 

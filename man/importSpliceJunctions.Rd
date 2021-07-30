@@ -46,43 +46,34 @@ Input should be a {tibble} containing the following columns:
 
 Common splice-junction formats (BED and SJ.out.tab (STAR)) can also be supplied and are converted into the correct DataFrame.
 
-By utilizing two separate junction-sites, interchromosomal trans-splicing or chimeric transcripts from genomic fusions 
+By utilizing two separate junction-sites, interchromosomal trans-splicing or chimeric transcripts from genomic fusions
 (e.g., resulting from the BCR/ABL1 fusion-gene) can also be handled.
 }
 \examples{
 
  ProteoDiscography.hg19 <- ProteoDisco::generateProteoDiscography(
-   TxDb = TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene, 
+   TxDb = TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene,
    genomeSeqs = BSgenome.Hsapiens.UCSC.hg19::BSgenome.Hsapiens.UCSC.hg19
  )
- 
+
  # Import from file.
  ProteoDiscography.hg19 <- ProteoDisco::importSpliceJunctions(
-   ProteoDiscography = ProteoDiscography.hg19, 
-   inputSpliceJunctions = system.file('extdata', 'spliceJunctions_pyQUILTS_chr22.bed', package = 'ProteoDisco'), 
+   ProteoDiscography = ProteoDiscography.hg19,
+   inputSpliceJunctions = system.file('extdata', 'spliceJunctions_pyQUILTS_chr22.bed', package = 'ProteoDisco'),
    # (Optional) Rename samples.
-   samples = c('pyQUILTS'), 
+   samples = 'pyQUILTS',
    # Specify that the given BED files are obtained from TopHat.
    # Chromosomal coordinates from TopHat require additional formatting.
    isTopHat = TRUE,
-   aggregateSamples = FALSE,
-   removeExisting = TRUE
  )
 
- # Add to ProteoDiscography.
- ProteoDiscography.hg19 <- ProteoDisco::importTranscriptSequences(
-   ProteoDiscography.hg19, 
-   transcripts = manualSeq
- )
- 
  # Or, import splice-junctions (even spanning different chromosomes) based on our format.
- testSJ <- readr::read_tsv(system.file('extdata', 'validationSetSJ_hg19.txt', package = 'ProteoDisco')) \%>\% 
-   dplyr::select(sample, identifier, junctionA, junctionB)
- 
+ testSJ <- readr::read_tsv(system.file('extdata', 'validationSetSJ_hg19.txt', package = 'ProteoDisco'))
+
  # Add custom SJ to ProteoDiscography.
  ProteoDiscography.hg19 <- ProteoDisco::importSpliceJunctions(
-   ProteoDiscography = ProteoDiscography.hg19, 
-   inputSpliceJunctions = testSJ, 
+   ProteoDiscography = ProteoDiscography.hg19,
+   inputSpliceJunctions = testSJ,
    # Append to existing SJ-input.
    removeExisting = FALSE
  )

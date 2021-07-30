@@ -21,7 +21,7 @@ Retrieve seqlevels.
 \examples{
 
 ProteoDiscography.hg19 <- ProteoDisco::generateProteoDiscography(
-  TxDb = TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene, 
+  TxDb = TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene,
   genomeSeqs = BSgenome.Hsapiens.UCSC.hg19::BSgenome.Hsapiens.UCSC.hg19
 )
 
