@@ -5,7 +5,7 @@ require(S4Vectors)
 require(Biostrings)
 require(tibble)
 
-setClassUnion("DNAStringSetORBSgenome", c("DNAStringSet", "BSgenome"))
+setClassUnion("DNAStringSet_OR_BSgenome", c("DNAStringSet", "BSgenome"))
 
 # ProteoDiscography ----------------------------------------------------------------
 
@@ -34,7 +34,7 @@ setClass(
     
     # TxDb and genomic sequences.
     TxDb = 'TxDb',
-    genomeSeqs = 'DNAStringSetORBSgenome',
+    genomeSeqs = 'DNAStringSet_OR_BSgenome',
     
     # Stores the user-input.
     input.genomicVariants = 'VRangesList',

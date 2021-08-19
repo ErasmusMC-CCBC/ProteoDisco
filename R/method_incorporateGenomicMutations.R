@@ -333,7 +333,7 @@ incorporateGenomicVariants <- function(ProteoDiscography, aggregateSamples = FAL
         mutCDS <- S4Vectors::unique(mutantCDS.currentSample.currentTx$CDS.SequenceMut)
         
         # If only a single CDS per exon can be replaced.
-        if(aggregateWithinExon & base::any(base::duplicated(mutantCDS.currentSample.currentTx$CDS.ID))){
+        if(aggregateWithinExon & base::any(!base::duplicated(mutantCDS.currentSample.currentTx$CDS.ID))){
           
           # Replace WT to Mutant Seq.
           Tx.CDS.Current.SequenceWT.tmp[base::names(Tx.CDS.Current.SequenceWT.tmp) %in% mutantCDS.currentSample$CDS.ID] <- mutCDS
@@ -524,7 +524,9 @@ incorporateGenomicVariants <- function(ProteoDiscography, aggregateSamples = FAL
   # Add variant transcripts to ProteoDiscography -----------------------------
   ParallelLogger::logInfo('\tProteoDisco - Adding mutant transcripts to the ProteoDiscography.')
   
-  ProteoDiscography <- setMutantTranscripts(ProteoDiscography, transcripts = mutantTx.allSamples, slotType = 'genomicVariants')
+  ProteoDiscography <- setMutantTranscripts(ProteoDiscography, 
+                                            transcripts = mutantTx.allSamples, 
+                                            slotType = 'genomicVariants')
   
   # Return statement --------------------------------------------------------
   
