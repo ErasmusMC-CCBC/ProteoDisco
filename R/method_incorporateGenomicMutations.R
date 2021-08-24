@@ -331,12 +331,14 @@ incorporateGenomicVariants <- function(ProteoDiscography, aggregateSamples = FAL
         
         # Mutant sequence of current CDS.
         mutCDS <- S4Vectors::unique(mutantCDS.currentSample.currentTx$CDS.SequenceMut)
+        names(mutCDS) <- S4Vectors::unique(mutantCDS.currentSample.currentTx$CDS.ID)
         
         # If only a single CDS per exon can be replaced.
         if(aggregateWithinExon & base::any(!base::duplicated(mutantCDS.currentSample.currentTx$CDS.ID))){
           
           # Replace WT to Mutant Seq.
-          Tx.CDS.Current.SequenceWT.tmp[base::names(Tx.CDS.Current.SequenceWT.tmp) %in% mutantCDS.currentSample$CDS.ID] <- mutCDS
+          index <- which(base::names(Tx.CDS.Current.SequenceWT.tmp) %in% mutantCDS.currentSample$CDS.ID)
+          Tx.CDS.Current.SequenceWT.tmp[index] <- mutCDS[names(Tx.CDS.Current.SequenceWT.tmp[index])]
           
           # Concatenate the CDS together into the full-length RNA-transcript.
           mutTx <- Biostrings::DNAStringSet(Biostrings::xscat(base::unlist(Tx.CDS.Current.SequenceWT.tmp)))
