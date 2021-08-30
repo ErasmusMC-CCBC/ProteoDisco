@@ -20,11 +20,10 @@ Display the organism of the TxDb
 }
 \examples{
 
-ProteoDiscography.hg19 <- ProteoDisco::generateProteoDiscography(
-  TxDb = TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene,
-  genomeSeqs = BSgenome.Hsapiens.UCSC.hg19::BSgenome.Hsapiens.UCSC.hg19
-)
+# Import example ProteoDiscography (hg19) and re-link TxDb.
+data('ProteoDiscographyExample.hg19', package = 'ProteoDisco')
+ProteoDiscographyExample.hg19@TxDb <- TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene
 
-organism(ProteoDiscography.hg19)
+organism(ProteoDiscographyExample.hg19)
 
 }

@@ -30,44 +30,13 @@ In addition, users can specify to only export (mutant) sequences containing at a
 }
 \examples{
 
-ProteoDiscography.hg19 <- ProteoDisco::generateProteoDiscography(
-  TxDb = TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene,
-  genomeSeqs = BSgenome.Hsapiens.UCSC.hg19::BSgenome.Hsapiens.UCSC.hg19
-)
-
-# Supply the ProteoDiscography with genomic variants to incorporate in downstream analysis. This can be one or multiple VCF / MAF files.
-# Additional manual sequences and exon-exon mapping (i.e., splice junctions) can also be given as shown in the sections below.
-ProteoDiscography.hg19 <- ProteoDisco::importGenomicVariants(
-  ProteoDiscography = ProteoDiscography.hg19,
-  # Provide the VCF / MAF files, if more then one supply a vector of files and corresponding samplenames.
-  files = system.file('extdata', 'validationSet_hg19.vcf', package = 'ProteoDisco'),
-  # We can replace the original samples within the VCF with nicer names.
-  samplenames = 'Validation Set (GRCh37)',
-  # Number of threads used for parallelization.
-  # We run samples sequentially and parallelize within (variant-wise multi-threading).
-  threads = 1,
-  # To increase import-speed for this example, do not check for validity of the reference anchor with the given reference sequences.
-  performAnchorCheck = FALSE
-)
-
-ProteoDiscography.hg19 <- ProteoDisco::incorporateGenomicVariants(
-  ProteoDiscography = ProteoDiscography.hg19,
-  # Do not aggregate samples and generate mutant transcripts from the mutations per sample.
-  aggregateSamples = FALSE,
-  # If there are multiple mutations within the same exon (CDS), place them on the same mutant CDS sequence.
-  aggregateWithinExon = TRUE,
-  # Aggregate multiple mutant exons (CDS) within the same transcripts instead of incorporating one at a time.
-  aggregateWithinTranscript = TRUE,
-  # If there are overlapping mutations on the same coding position, retain only the first of the overlapping mutations.
-  # If set to FALSE, throw an error and specify which CDS had overlapping mutations.
-  ignoreOverlappingMutations = TRUE,
-  # Number of threads.
-  threads = 1
-)
+# Import example ProteoDiscography (hg19)
+data('ProteoDiscographyExample.hg19', package = 'ProteoDisco')
+ProteoDiscographyExample.hg19@TxDb <- TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene
 
 # Export peptide sequences to FASTA file. Optionally, only export those with at least a min.
 # number of proteotypic fragments.
-exportProteoDiscography(ProteoDiscography.hg19, outFile = 'out.fasta')
+exportProteoDiscography(ProteoDiscographyExample.hg19, outFile = 'out.fasta')
 
 }
 \author{

@@ -1,18 +1,16 @@
 context("Importing manual sequences as additional transcripts")
 
 test_that("Manual transcripts are incorporated as expected", {
-  
-  ProteoDiscography.hg19 <- ProteoDisco::generateProteoDiscography(
-    TxDb = TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene, 
-    genomeSeqs = BSgenome.Hsapiens.UCSC.hg19::BSgenome.Hsapiens.UCSC.hg19
-  )
-  
+
+  # Import example ProteoDiscography (hg19)
+  data('ProteoDiscographyExample.hg19', package = 'ProteoDisco')
+
   # Retrieve TMPRSS2-ERG sequence from ENA.
   testSeq1 <- Biostrings::DNAString('ATGACCGCGTCCTCCTCCAGCGACTATGGACAGACTTCCAAGATGAGCCCACGCGTCCCTCAGCAGGATTGGCTGTCTCAACCCCCAGCCAGGGTCACCATCAAAATGGAATGTAACCCTAGCCAGGTGAATGGCTCAAGGAACTCTCCTGATGAATGCAGTGTGGCCAAAGGCGGGAAGATGGTGGGCAGCCCAGACACCGTTGGGATGAACTACGGCAGCTACATGGAGGAGAAGCACATGCCACCCCCAAACATGACCACGAACGAGCGCAGAGTTATCGTGCCAGCAGATCCTACGCTATGGAGTACAGACCATGTGCGGCAGTGGCTGGAGTGGGCGGTGAAAGAATATGGCCTTCCAGACGTCAACATCTTGTTATTCCAGAACATCGATGGGAAGGAACTGTGCAAGATGACCAAGGACGACTTCCAGAGGCTCACCCCCAGCTACAACGCCGACATCCTTCTCTCACATCTCCACTACCTCAGAGAGACTCCTCTTCCACATTTGACTTCAGATGATGTTGATAAAGCCTTACAAAACTCTCCACGGTTAATGCATGCTAGAAACACAGGGGGTGCAGCTTTTATTTTCCCAAATACTTCAGTATATCCTGAAGCTACGCAAAGAATTACAACTAGGCCAGTCTCTTACAGATAA')
-  
+
   # Retrieve partial CDS of BCR-ABL from ENA.
   testSeq2 <- Biostrings::DNAString('ATGATGAGTCTCCGGGGCTCTATGGGTTTCTGAATGTCATCGTCCACTCAGCCACTGGATTTAAGCAGAGTTCAAAAGCCCTTCAGCGGCCAGTAGCATCTGACTTTGAGCCTCAGGGTCTGAGTGAAGCCGCTCGTTGGAACTCCAAGGAAAACCTTCTCGCTGGACCCAGTGAAAATGACCCCAACCTTTTCGTTGCACTGTATGATTTTGTGGCCAGTGGAGATAACACTCTAAGCATAACTAAAGGTGAAAAGCTCCGGGTCTTAGGCTATAATCACAATGGGGAATGGTTTGAAGCCCAAACCAAAAATGGCCAAGGCTGGGTCCCAAGCAACTACATCACGCCAGTCAACAGTCTGGAGAAACACTCCTGGTACCATGGGCCTGTGTCCCGCAATGCCGCTGAGTATCTGCTGAGCAGCGGGATCAAT')
-  
+
   # Generate DataFrame containing the mutant sequences and metadata.
   manualSeq <- S4Vectors::DataFrame(
     sample = rep('example', 2),
@@ -20,21 +18,21 @@ test_that("Manual transcripts are incorporated as expected", {
     gene = c('TMPRSS2-ERG', 'BCR-ABL'),
     Tx.SequenceMut = Biostrings::DNAStringSet(base::list(testSeq1, testSeq2))
   )
-  
-  ProteoDiscography.hg19 <- ProteoDisco::importTranscriptSequences(
-    ProteoDiscography.hg19, 
-    transcripts = manualSeq, 
+
+  ProteoDiscographyExample.hg19 <- ProteoDisco::importTranscriptSequences(
+    ProteoDiscographyExample.hg19,
+    transcripts = manualSeq,
     removeExisting = TRUE
   )
-  
+
   testthat::expect_equal(
-    object = nrow(ProteoDisco::getDiscography(ProteoDiscography.hg19)$manualSequences), 
+    object = nrow(ProteoDisco::getDiscography(ProteoDiscographyExample.hg19)$manualSequences),
     expected = 2
   )
-  
+
   testthat::expect_equal(
-    object = nrow(ProteoDisco::mutantTranscripts(ProteoDiscography.hg19)$manualSequences), 
+    object = nrow(ProteoDisco::mutantTranscripts(ProteoDiscographyExample.hg19)$manualSequences),
     expected = 2
   )
-  
+
 })

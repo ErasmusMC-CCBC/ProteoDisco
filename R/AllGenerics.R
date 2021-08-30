@@ -3,12 +3,11 @@
 #'
 #' @examples
 #'
-#' ProteoDiscography.hg19 <- ProteoDisco::generateProteoDiscography(
-#'   TxDb = TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene,
-#'   genomeSeqs = BSgenome.Hsapiens.UCSC.hg19::BSgenome.Hsapiens.UCSC.hg19
-#' )
+#' # Import example ProteoDiscography (hg19) and re-link TxDb.
+#' data('ProteoDiscographyExample.hg19', package = 'ProteoDisco')
+#' ProteoDiscographyExample.hg19@TxDb <- TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene
 #'
-#' print(ProteoDiscography.hg19)
+#' print(ProteoDiscographyExample.hg19)
 #'
 #' @return Displays information relating to the ProteoDiscography into the console.
 #' @rdname print
@@ -24,12 +23,11 @@ setGeneric('.setSplicingJunctions', function(x, spliceJunctions, removeExisting,
 #' @param object (ProteoDiscography): ProteoDiscography object.
 #' @examples
 #'
-#' ProteoDiscography.hg19 <- ProteoDisco::generateProteoDiscography(
-#'   TxDb = TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene,
-#'   genomeSeqs = BSgenome.Hsapiens.UCSC.hg19::BSgenome.Hsapiens.UCSC.hg19
-#' )
+#' # Import example ProteoDiscography (hg19) and re-link TxDb.
+#' data('ProteoDiscographyExample.hg19', package = 'ProteoDisco')
+#' ProteoDiscographyExample.hg19@TxDb <- TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene
 #'
-#' show(ProteoDiscography.hg19)
+#' show(ProteoDiscographyExample.hg19)
 #'
 #' @return Displays information relating to the ProteoDiscography into the console.
 #' @rdname show
@@ -41,12 +39,11 @@ setGeneric('show', function(object) standardGeneric("show"))
 #' @param verbose (logical): Set the verbosity
 #' @examples
 #'
-#' ProteoDiscography.hg19 <- ProteoDisco::generateProteoDiscography(
-#'   TxDb = TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene,
-#'   genomeSeqs = BSgenome.Hsapiens.UCSC.hg19::BSgenome.Hsapiens.UCSC.hg19
-#' )
+#' # Import example ProteoDiscography (hg19) and re-link TxDb.
+#' data('ProteoDiscographyExample.hg19', package = 'ProteoDisco')
+#' ProteoDiscographyExample.hg19@TxDb <- TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene
 #'
-#' summary(ProteoDiscography.hg19)
+#' summary(ProteoDiscographyExample.hg19)
 #'
 #' @return Displays information relating to the ProteoDiscography into the console.
 #' If verbose is set to TRUE, it will also output the imported genomic variants, splicing junctions and manual sequences as a list of tibbles.
@@ -58,12 +55,11 @@ setGeneric('summary', function(object, verbose = TRUE) standardGeneric("summary"
 #' @param x (ProteoDiscography): ProteoDiscography object.
 #' @examples
 #'
-#' ProteoDiscography.hg19 <- ProteoDisco::generateProteoDiscography(
-#'   TxDb = TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene,
-#'   genomeSeqs = BSgenome.Hsapiens.UCSC.hg19::BSgenome.Hsapiens.UCSC.hg19
-#' )
+#' # Import example ProteoDiscography (hg19) and re-link TxDb.
+#' data('ProteoDiscographyExample.hg19', package = 'ProteoDisco')
+#' ProteoDiscographyExample.hg19@TxDb <- TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene
 #'
-#' seqinfo(ProteoDiscography.hg19)
+#' seqinfo(ProteoDiscographyExample.hg19)
 #'
 #' @return Returns an Seqinfo-class containing information on the imported genomic sequences.
 #' @rdname seqinfo
@@ -74,12 +70,11 @@ setGeneric('seqinfo', function(x) standardGeneric("seqinfo"))
 #' @param x (ProteoDiscography): ProteoDiscography object.
 #' @examples
 #'
-#' ProteoDiscography.hg19 <- ProteoDisco::generateProteoDiscography(
-#'   TxDb = TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene,
-#'   genomeSeqs = BSgenome.Hsapiens.UCSC.hg19::BSgenome.Hsapiens.UCSC.hg19
-#' )
+#' # Import example ProteoDiscography (hg19) and re-link TxDb.
+#' data('ProteoDiscographyExample.hg19', package = 'ProteoDisco')
+#' ProteoDiscographyExample.hg19@TxDb <- TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene
 #'
-#' seqlevels(ProteoDiscography.hg19)
+#' seqlevels(ProteoDiscographyExample.hg19)
 #'
 #' @return seqlevels of the improted genomic sequences.
 #' @rdname seqlevels
@@ -90,12 +85,11 @@ setGeneric('seqlevels', function(x) standardGeneric("seqlevels"))
 #' @param object (ProteoDiscography): ProteoDiscography object.
 #' @examples
 #'
-#' ProteoDiscography.hg19 <- ProteoDisco::generateProteoDiscography(
-#'   TxDb = TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene,
-#'   genomeSeqs = BSgenome.Hsapiens.UCSC.hg19::BSgenome.Hsapiens.UCSC.hg19
-#' )
+#' # Import example ProteoDiscography (hg19) and re-link TxDb.
+#' data('ProteoDiscographyExample.hg19', package = 'ProteoDisco')
+#' ProteoDiscographyExample.hg19@TxDb <- TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene
 #'
-#' organism(ProteoDiscography.hg19)
+#' organism(ProteoDiscographyExample.hg19)
 #'
 #' @return Returns the specified organism during creation.
 #' @rdname organism
@@ -106,28 +100,12 @@ setGeneric('organism', function(object) standardGeneric("organism"))
 #' @param x (ProteoDiscography): ProteoDiscography object.
 #' @examples
 #'
-#' ProteoDiscography.hg19 <- ProteoDisco::generateProteoDiscography(
-#'   TxDb = TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene,
-#'   genomeSeqs = BSgenome.Hsapiens.UCSC.hg19::BSgenome.Hsapiens.UCSC.hg19
-#' )
-#'
-#' # Supply the ProteoDiscography with genomic variants to incorporate in downstream analysis. This can be one or multiple VCF / MAF files.
-#' # Additional manual sequences and exon-exon mapping (i.e., splice junctions) can also be given as shown in the sections below.
-#' ProteoDiscography.hg19 <- ProteoDisco::importGenomicVariants(
-#'   ProteoDiscography = ProteoDiscography.hg19,
-#'   # Provide the VCF / MAF files, if more then one supply a vector of files and corresponding samplenames.
-#'   files = system.file('extdata', 'validationSet_hg19.vcf', package = 'ProteoDisco'),
-#'   # We can replace the original samples within the VCF with nicer names.
-#'   samplenames = 'Validation Set (GRCh37)',
-#'   # Number of threads used for parallelization.
-#'   # We run samples sequentially and parallelize within (variant-wise multi-threading).
-#'   threads = 1,
-#'   # To increase import-speed for this example, do not check for validity of the reference anchor with the given reference sequences.
-#'   performAnchorCheck = FALSE
-#' )
+#' # Import example ProteoDiscography (hg19) and re-link TxDb.
+#' data('ProteoDiscographyExample.hg19', package = 'ProteoDisco')
+#' ProteoDiscographyExample.hg19@TxDb <- TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene
 #'
 #' # Retrieve the imported records.
-#' getDiscography(ProteoDiscography.hg19)
+#' getDiscography(ProteoDiscographyExample.hg19)
 #'
 #' @return Return a list of imported records, per category (genomic variants, splice-junctions and manual sequences).
 #' @rdname getDiscography
@@ -142,50 +120,18 @@ setGeneric('getDiscography', function(x) standardGeneric("getDiscography"))
 #' @examples
 #'
 #' # From a ProteoDiscography with imported and incorporated records, take only the first 10 records.
-#' # ProteoDisco::setMutantTranscripts(ProteoDiscography.hg19)$genomicVariants[1:10], slotType = 'genomicVariants')
-#' # ProteoDisco::setMutantTranscripts(ProteoDiscography.hg19)$spliceJunctions[1:10], slotType = 'spliceJunctions')
-#' # ProteoDisco::setMutantTranscripts(ProteoDiscography.hg19)$manualSequences[1:10], slotType = 'manualSequences')
+#' # ProteoDisco::setMutantTranscripts(ProteoDiscography)$genomicVariants[1:10], slotType = 'genomicVariants')
+#' # ProteoDisco::setMutantTranscripts(ProteoDiscography)$spliceJunctions[1:10], slotType = 'spliceJunctions')
+#' # ProteoDisco::setMutantTranscripts(ProteoDiscography)$manualSequences[1:10], slotType = 'manualSequences')
 #'
-#' # Example using genomic variants
-#' ProteoDiscography.hg19 <- ProteoDisco::generateProteoDiscography(
-#'   TxDb = TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene,
-#'   genomeSeqs = BSgenome.Hsapiens.UCSC.hg19::BSgenome.Hsapiens.UCSC.hg19
-#' )
+#' # Import example ProteoDiscography (hg19) and re-link TxDb.
+#' data('ProteoDiscographyExample.hg19', package = 'ProteoDisco')
+#' ProteoDiscographyExample.hg19@TxDb <- TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene
 #'
-#' # Supply the ProteoDiscography with genomic variants to incorporate in downstream analysis. This can be one or multiple VCF / MAF files.
-#' # Additional manual sequences and exon-exon mapping (i.e., splice junctions) can also be given as shown in the sections below.
-#' ProteoDiscography.hg19 <- ProteoDisco::importGenomicVariants(
-#'   ProteoDiscography = ProteoDiscography.hg19,
-#'   # Provide the VCF / MAF files, if more then one supply a vector of files and corresponding samplenames.
-#'   files = system.file('extdata', 'validationSet_hg19.vcf', package = 'ProteoDisco'),
-#'   # We can replace the original samples within the VCF with nicer names.
-#'   samplenames = 'Validation Set (GRCh37)',
-#'   # Number of threads used for parallelization.
-#'   # We run samples sequentially and parallelize within (variant-wise multi-threading).
-#'   threads = 1,
-#'   # To increase import-speed for this example, do not check for validity of the reference anchor with the given reference sequences.
-#'   performAnchorCheck = FALSE
-#' )
-#'
-#' ProteoDiscography.hg19 <- ProteoDisco::incorporateGenomicVariants(
-#'   ProteoDiscography = ProteoDiscography.hg19,
-#'   # Do not aggregate samples and generate mutant transcripts from the mutations per sample.
-#'   aggregateSamples = FALSE,
-#'   # If there are multiple mutations within the same exon (CDS), place them on the same mutant CDS sequence.
-#'   aggregateWithinExon = TRUE,
-#'   # Aggregate multiple mutant exons (CDS) within the same transcripts instead of incorporating one at a time.
-#'   aggregateWithinTranscript = TRUE,
-#'   # If there are overlapping mutations on the same coding position, retain only the first of the overlapping mutations.
-#'   # If set to FALSE, throw an error and specify which CDS had overlapping mutations.
-#'   ignoreOverlappingMutations = TRUE,
-#'   # Number of threads.
-#'   threads = 1
-#' )
-#'
-#' # Only keep the first10 records.
-#' ProteoDiscography.hg19 <- ProteoDisco::setMutantTranscripts(
+#' # Only keep the first ten records.
+#' ProteoDiscographyExample.hg19 <- ProteoDisco::setMutantTranscripts(
 #'   x = ProteoDiscography.hg19,
-#'   transcripts = ProteoDisco::mutantTranscripts(ProteoDiscography.hg19)$genomicVariants[1:10,],
+#'   transcripts = ProteoDisco::mutantTranscripts(ProteoDiscographyExample.hg19)$genomicVariants[1:10,],
 #'   slotType = 'genomicVariants'
 #' )
 #'
@@ -199,43 +145,12 @@ setGeneric("setMutantTranscripts", function(x, transcripts, slotType) standardGe
 #'
 #' @examples
 #'
-#' ProteoDiscography.hg19 <- ProteoDisco::generateProteoDiscography(
-#'   TxDb = TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene,
-#'   genomeSeqs = BSgenome.Hsapiens.UCSC.hg19::BSgenome.Hsapiens.UCSC.hg19
-#' )
-#'
-#' # Supply the ProteoDiscography with genomic variants to incorporate in downstream analysis. This can be one or multiple VCF / MAF files.
-#' # Additional manual sequences and exon-exon mapping (i.e., splice junctions) can also be given as shown in the sections below.
-#' ProteoDiscography.hg19 <- ProteoDisco::importGenomicVariants(
-#'   ProteoDiscography = ProteoDiscography.hg19,
-#'   # Provide the VCF / MAF files, if more then one supply a vector of files and corresponding samplenames.
-#'   files = system.file('extdata', 'validationSet_hg19.vcf', package = 'ProteoDisco'),
-#'   # We can replace the original samples within the VCF with nicer names.
-#'   samplenames = 'Validation Set (GRCh37)',
-#'   # Number of threads used for parallelization.
-#'   # We run samples sequentially and parallelize within (variant-wise multi-threading).
-#'   threads = 1,
-#'   # To increase import-speed for this example, do not check for validity of the reference anchor with the given reference sequences.
-#'   performAnchorCheck = FALSE
-#' )
-#'
-#' ProteoDiscography.hg19 <- ProteoDisco::incorporateGenomicVariants(
-#'   ProteoDiscography = ProteoDiscography.hg19,
-#'   # Do not aggregate samples and generate mutant transcripts from the mutations per sample.
-#'   aggregateSamples = FALSE,
-#'   # If there are multiple mutations within the same exon (CDS), place them on the same mutant CDS sequence.
-#'   aggregateWithinExon = TRUE,
-#'   # Aggregate multiple mutant exons (CDS) within the same transcripts instead of incorporating one at a time.
-#'   aggregateWithinTranscript = TRUE,
-#'   # If there are overlapping mutations on the same coding position, retain only the first of the overlapping mutations.
-#'   # If set to FALSE, throw an error and specify which CDS had overlapping mutations.
-#'   ignoreOverlappingMutations = TRUE,
-#'   # Number of threads.
-#'   threads = 1
-#' )
+#' # Import example ProteoDiscography (hg19) and re-link TxDb.
+#' data('ProteoDiscographyExample.hg19', package = 'ProteoDisco')
+#' ProteoDiscographyExample.hg19@TxDb <- TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene
 #'
 #' # Retrieve all generated mutant transcripts.
-#' mutantTranscripts(ProteoDiscography.hg19)
+#' mutantTranscripts(ProteoDiscographyExample.hg19)
 #'
 #' @return Return all incorporated mutant transcripts (list of DataFrame).
 #' @rdname mutantTranscripts
@@ -257,29 +172,13 @@ setGeneric("mutantTranscripts", function(x) standardGeneric("mutantTranscripts")
 #'
 #' @examples
 #'
-#'  ProteoDiscography.hg19 <- ProteoDisco::generateProteoDiscography(
-#'    TxDb = TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene,
-#'    genomeSeqs = BSgenome.Hsapiens.UCSC.hg19::BSgenome.Hsapiens.UCSC.hg19
-#'  )
+#' # Import example ProteoDiscography (hg19) and re-link TxDb.
+#' data('ProteoDiscographyExample.hg19', package = 'ProteoDisco')
+#' ProteoDiscographyExample.hg19@TxDb <- TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene
 #'
-#'  ProteoDiscography.hg19 <- ProteoDisco::importGenomicVariants(
-#'    ProteoDiscography = ProteoDiscography.hg19,
-#'    # Provide the VCF / MAF files, if more then one supply a vector of files and corresponding samplenames.
-#'    files = system.file('extdata', 'validationSet_hg19.vcf', package = 'ProteoDisco'),
-#'    # We can replace the original samples within the VCF with nicer names.
-#'    samplenames = 'Validation Set (GRCh37)',
-#'    # Number of threads used for parallelization.
-#'    # We run samples sequentially and parallelize within (variant-wise multi-threading).
-#'    threads = 1,
-#'    # To increase import-speed for this example, do not check for validity of the reference anchor with the given reference sequences.
-#'    performAnchorCheck = FALSE
-#'  )
-#'
-#'  ProteoDiscography.hg19 <- ProteoDisco::incorporateGenomicVariants(ProteoDiscography.hg19)
-#'
-#'  # Results will now contain additional information about proteotypic fragments.
-#'  # With a large TxDb, this can take a while.
-#'  # ProteoDiscography.hg19 <- ProteoDisco::checkProteotypicFragments(ProteoDiscography.hg19)
+#' # Results will now contain additional information about proteotypic fragments.
+#' # With a large TxDb, this can take a while.
+#' # ProteoDiscography.hg19 <- ProteoDisco::checkProteotypicFragments(ProteoDiscographyExample.hg19)
 #'
 #' @return {ProteoDiscography} with an additional column specifying the number of proteotypic fragments per record.
 #' @rdname checkProteotypicFragments

@@ -13,12 +13,10 @@ test_that("Min. import to export workflow", {
 
   # Import validation set ---------------------------------------------------
 
-  files.muts <- system.file('extdata', 'validationSet_hg19.vcf', package = 'ProteoDisco')
-
   # Import all mutations from one or multiple VCF (or MAF) files.
   ProteoDiscography.hg19 <- ProteoDisco::importGenomicVariants(
     ProteoDiscography.hg19,
-    files.muts,
+    system.file('extdata', 'validationSet_hg19.vcf', package = 'ProteoDisco'),
     ignoreNonMatch = FALSE,
     threads = 1
   )
@@ -33,13 +31,13 @@ test_that("Min. import to export workflow", {
 
   # Incorporate genomic variants --------------------------------------------
 
-  testSetProteins_hg19 <- readr::read_csv(file = system.file("extdata", "Table1_testSetProteins.csv", package = "ProteoDisco")) %>% dplyr::filter(Build == 'hg19')
+  testSetProteins_hg19 <- readr::read_csv(file = system.file("extdata", "Table1_testSetProteins.csv", package = "ProteoDisco"), show_col_types = FALSE) %>% dplyr::filter(Build == 'hg19')
 
   ProteoDiscography.hg19 <- ProteoDisco::incorporateGenomicVariants(
     ProteoDiscography = ProteoDiscography.hg19,
     aggregateSamples = FALSE,
     aggregateWithinExon = TRUE,
-    aggregateWithinTranscript = TRUE,
+    aggregateWithinTranscript = FALSE,
     ignoreOverlappingMutations = TRUE,
     threads = 1
   )
@@ -52,7 +50,7 @@ test_that("Min. import to export workflow", {
     ProteoDiscography = ProteoDiscography.hg19,
     aggregateSamples = FALSE,
     aggregateWithinExon = FALSE,
-    aggregateWithinTranscript = TRUE,
+    aggregateWithinTranscript = FALSE,
     ignoreOverlappingMutations = TRUE,
     threads = 1
   )
@@ -70,37 +68,19 @@ test_that("Min. import to export workflow", {
 
 test_that("Duplicate sample is not allowed (or overwritten)", {
 
-  ProteoDiscography.hg19 <- ProteoDisco::generateProteoDiscography(
-    TxDb = TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene,
-    genomeSeqs = BSgenome.Hsapiens.UCSC.hg19::BSgenome.Hsapiens.UCSC.hg19
-  )
-
-  # One or more VCF or MAF files.
-  files.muts <- system.file('extdata', 'validationSet_hg19.vcf', package = 'ProteoDisco')
-
-  # Import all mutations from one or multiple VCF (or MAF) files.
-  ProteoDiscography.hg19 <- ProteoDisco::importGenomicVariants(
-    ProteoDiscography.hg19,
-    files.muts,
-    ignoreNonMatch = TRUE,
-    overwriteDuplicateSamples = FALSE
-  )
+  # Import example ProteoDiscography (hg19)
+  data('ProteoDiscographyExample.hg19', package = 'ProteoDisco')
+  ProteoDiscographyExample.hg19@TxDb <- TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene
 
   #Expect an error to pop due to duplicate samples and overwriteDuplicateSamples set to FALSE
-  testthat::expect_error(ProteoDiscography.hg19 <- ProteoDisco::importGenomicVariants(
-    ProteoDiscography.hg19,
-    files.muts,
-    ignoreNonMatch = TRUE,
-    overwriteDuplicateSamples = FALSE)
-  )
-
-  #Expect no error pop due to duplicate samples and overwriteDuplicateSamples set to TRUE
-  testthat::expect_error(ProteoDiscography.hg19 <- ProteoDisco::importGenomicVariants(
-    ProteoDiscography.hg19,
-    files.muts,
-    ignoreNonMatch = TRUE,
-    overwriteDuplicateSamples = TRUE),
-    NA
+  testthat::expect_error(
+    ProteoDiscography.hg19 <- ProteoDisco::importGenomicVariants(
+      ProteoDiscographyExample.hg19,
+      system.file('extdata', 'validationSet_hg19.vcf', package = 'ProteoDisco'),
+      samplenames = 'Validation Set (GRCh37)',
+      ignoreNonMatch = TRUE,
+      overwriteDuplicateSamples = FALSE
+    )
   )
 
 })

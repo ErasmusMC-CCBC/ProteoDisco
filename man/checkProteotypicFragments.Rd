@@ -44,29 +44,13 @@ contain one or multiple proteotypic fragment(s) after cleavage by a selected pro
 }
 \examples{
 
- ProteoDiscography.hg19 <- ProteoDisco::generateProteoDiscography(
-   TxDb = TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene,
-   genomeSeqs = BSgenome.Hsapiens.UCSC.hg19::BSgenome.Hsapiens.UCSC.hg19
- )
+# Import example ProteoDiscography (hg19) and re-link TxDb.
+data('ProteoDiscographyExample.hg19', package = 'ProteoDisco')
+ProteoDiscographyExample.hg19@TxDb <- TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene
 
- ProteoDiscography.hg19 <- ProteoDisco::importGenomicVariants(
-   ProteoDiscography = ProteoDiscography.hg19,
-   # Provide the VCF / MAF files, if more then one supply a vector of files and corresponding samplenames.
-   files = system.file('extdata', 'validationSet_hg19.vcf', package = 'ProteoDisco'),
-   # We can replace the original samples within the VCF with nicer names.
-   samplenames = 'Validation Set (GRCh37)',
-   # Number of threads used for parallelization.
-   # We run samples sequentially and parallelize within (variant-wise multi-threading).
-   threads = 1,
-   # To increase import-speed for this example, do not check for validity of the reference anchor with the given reference sequences.
-   performAnchorCheck = FALSE
- )
-
- ProteoDiscography.hg19 <- ProteoDisco::incorporateGenomicVariants(ProteoDiscography.hg19)
-
- # Results will now contain additional information about proteotypic fragments.
- # With a large TxDb, this can take a while.
- # ProteoDiscography.hg19 <- ProteoDisco::checkProteotypicFragments(ProteoDiscography.hg19)
+# Results will now contain additional information about proteotypic fragments.
+# With a large TxDb, this can take a while.
+# ProteoDiscography.hg19 <- ProteoDisco::checkProteotypicFragments(ProteoDiscographyExample.hg19)
 
 }
 \author{
