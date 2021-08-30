@@ -130,7 +130,7 @@ setGeneric('getDiscography', function(x) standardGeneric("getDiscography"))
 #'
 #' # Only keep the first ten records.
 #' ProteoDiscographyExample.hg19 <- ProteoDisco::setMutantTranscripts(
-#'   x = ProteoDiscography.hg19,
+#'   x = ProteoDiscographyExample.hg19,
 #'   transcripts = ProteoDisco::mutantTranscripts(ProteoDiscographyExample.hg19)$genomicVariants[1:10,],
 #'   slotType = 'genomicVariants'
 #' )

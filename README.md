@@ -9,7 +9,7 @@ The flexible workflow can be adopted to suit a myriad of research and experiment
 
 ## Reference
 
-van Geer and van Riet et al. in <JOURNAL> (2021): [TITLE](https://www.google.com/).
+van de Geer and van Riet et al. in <JOURNAL> (2021): [TITLE](https://www.google.com/).
 
 
 # Table of Contents
@@ -38,9 +38,7 @@ if (!requireNamespace("BiocManager", quietly = TRUE))
 BiocManager::install("ProteoDisco")
 ```
 
-***
-
-## Usage
+# Usage
 
 Please view the vignettes for instructions and tutorials on how to use this package.
 

@@ -38,7 +38,7 @@ ProteoDiscographyExample.hg19@TxDb <- TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hs
 
 # Only keep the first ten records.
 ProteoDiscographyExample.hg19 <- ProteoDisco::setMutantTranscripts(
-  x = ProteoDiscography.hg19,
+  x = ProteoDiscographyExample.hg19,
   transcripts = ProteoDisco::mutantTranscripts(ProteoDiscographyExample.hg19)$genomicVariants[1:10,],
   slotType = 'genomicVariants'
 )
