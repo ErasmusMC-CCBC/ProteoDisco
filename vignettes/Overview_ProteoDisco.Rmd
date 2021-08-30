@@ -1,17 +1,16 @@
 ---
-title: 'Overview of Proteodisco.'
+title: 'Overview of Proteodisco'
 date: '`r Sys.Date()`'
-author: 'Job van Riet / Wesley van de Geer'
+author:
+- Job van Riet
+- Wesley van de Geer
+- Harmen van de Werken
 vignette: >
   %\VignetteIndexEntry{Overview_Proteodisco}
   %\VignetteEngine{knitr::knitr}
   %\VignetteEncoding{UTF-8}
-output:
-  rmdformats::downcute:
-    code_folding: show
-    self_contained: true
-    thumbnails: false
-    lightbox: true
+package: 'ProteoDisco'
+output: BiocStyle::html_document
 ---
 
 ```{r knitr_init, echo = FALSE, cache = FALSE, results = 'hide', warning=FALSE, message=FALSE}
