@@ -38,7 +38,7 @@ test_that("SJs are incorporated as expected", {
     ProteoDiscography = ProteoDiscographyExample.hg19,
     maxDistance = 150,
     skipCanonical = TRUE,
-    threads = 1,
+    threads = 1
   )
 
   testthat::expect_equal(length(ProteoDisco::mutantTranscripts(ProteoDiscographyExample.hg19)$spliceJunctions$identifier), 70, info = "Should have 70 non-canonical splice-transcripts from the two sources")
