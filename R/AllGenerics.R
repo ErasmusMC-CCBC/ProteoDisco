@@ -3,9 +3,10 @@
 #'
 #' @examples
 #'
-#' # Import example ProteoDiscography (hg19) and re-link TxDb.
+#' # Import example ProteoDiscography (hg19)
 #' data('ProteoDiscographyExample.hg19', package = 'ProteoDisco')
-#' ProteoDiscographyExample.hg19@TxDb <- TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene
+#' ProteoDiscographyExample.hg19 <- setTxDb(ProteoDiscographyExample.hg19, TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene)
+#' ProteoDiscographyExample.hg19 <- setGenomicSequences(ProteoDiscographyExample.hg19, BSgenome.Hsapiens.UCSC.hg19::BSgenome.Hsapiens.UCSC.hg19)
 #'
 #' print(ProteoDiscographyExample.hg19)
 #'
@@ -19,13 +20,49 @@ setGeneric('.setGenomicVariants', function(x, variants, removeExisting, overwrit
 setGeneric('.setManualSequences', function(x, transcripts, removeExisting, overwriteDuplicateSamples) standardGeneric(".setManualSequences"))
 setGeneric('.setSplicingJunctions', function(x, spliceJunctions, removeExisting, overwriteDuplicateSamples) standardGeneric(".setSplicingJunctions"))
 
-#' @title Display a summary of ProteoDiscography
-#' @param object (ProteoDiscography): ProteoDiscography object.
+#' @title Change the underlying TxDb of a ProteoDiscography object.
+#' @param x (ProteoDiscography): ProteoDiscography object.
+#' @param TxDb (\link[GenomicFeatures]{TxDb}): TxDb object containing the genomic and transcript annotations.
+#'
 #' @examples
 #'
 #' # Import example ProteoDiscography (hg19) and re-link TxDb.
 #' data('ProteoDiscographyExample.hg19', package = 'ProteoDisco')
-#' ProteoDiscographyExample.hg19@TxDb <- TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene
+#' ProteoDiscographyExample.hg19 <- setTxDb(ProteoDiscographyExample.hg19, TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene)
+#'
+#' summary(ProteoDiscographyExample.hg19)
+#'
+#' @return ProteoDiscography with updated TxDb.
+#' @rdname setTxDb
+#' @export
+setGeneric("setTxDb", function(x, TxDb) standardGeneric("setTxDb"))
+
+#' @title Change the underlying genomic sequences of a ProteoDiscography object.
+#' @param x (ProteoDiscography): ProteoDiscography object.
+#' @param genomeSeqs (\link[Biostrings]{DNAStringSet} or \link[BSgenome]{BSgenome}): Genomic sequence of the respective genome.
+#'
+#' @examples
+#'
+#' # Import example ProteoDiscography (hg19) and re-link genomic sequences.
+#' data('ProteoDiscographyExample.hg19', package = 'ProteoDisco')
+#' ProteoDiscographyExample.hg19 <- setTxDb(ProteoDiscographyExample.hg19, TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene)
+#' ProteoDiscographyExample.hg19 <- setGenomicSequences(ProteoDiscographyExample.hg19, BSgenome.Hsapiens.UCSC.hg19::BSgenome.Hsapiens.UCSC.hg19)
+#'
+#' summary(ProteoDiscographyExample.hg19)
+#'
+#' @return ProteoDiscography with updated genomic sequences.
+#' @rdname setGenomicSequences
+#' @export
+setGeneric("setGenomicSequences", function(x, genomeSeqs) standardGeneric("setGenomicSequences"))
+
+#' @title Display a summary of ProteoDiscography
+#' @param object (ProteoDiscography): ProteoDiscography object.
+#' @examples
+#'
+#' # Import example ProteoDiscography (hg19)
+#' data('ProteoDiscographyExample.hg19', package = 'ProteoDisco')
+#' ProteoDiscographyExample.hg19 <- setTxDb(ProteoDiscographyExample.hg19, TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene)
+#' ProteoDiscographyExample.hg19 <- setGenomicSequences(ProteoDiscographyExample.hg19, BSgenome.Hsapiens.UCSC.hg19::BSgenome.Hsapiens.UCSC.hg19)
 #'
 #' show(ProteoDiscographyExample.hg19)
 #'
@@ -39,9 +76,10 @@ setGeneric('show', function(object) standardGeneric("show"))
 #' @param verbose (logical): Set the verbosity
 #' @examples
 #'
-#' # Import example ProteoDiscography (hg19) and re-link TxDb.
+#' # Import example ProteoDiscography (hg19)
 #' data('ProteoDiscographyExample.hg19', package = 'ProteoDisco')
-#' ProteoDiscographyExample.hg19@TxDb <- TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene
+#' ProteoDiscographyExample.hg19 <- setTxDb(ProteoDiscographyExample.hg19, TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene)
+#' ProteoDiscographyExample.hg19 <- setGenomicSequences(ProteoDiscographyExample.hg19, BSgenome.Hsapiens.UCSC.hg19::BSgenome.Hsapiens.UCSC.hg19)
 #'
 #' summary(ProteoDiscographyExample.hg19)
 #'
@@ -55,9 +93,10 @@ setGeneric('summary', function(object, verbose = TRUE) standardGeneric("summary"
 #' @param x (ProteoDiscography): ProteoDiscography object.
 #' @examples
 #'
-#' # Import example ProteoDiscography (hg19) and re-link TxDb.
+#' # Import example ProteoDiscography (hg19)
 #' data('ProteoDiscographyExample.hg19', package = 'ProteoDisco')
-#' ProteoDiscographyExample.hg19@TxDb <- TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene
+#' ProteoDiscographyExample.hg19 <- setTxDb(ProteoDiscographyExample.hg19, TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene)
+#' ProteoDiscographyExample.hg19 <- setGenomicSequences(ProteoDiscographyExample.hg19, BSgenome.Hsapiens.UCSC.hg19::BSgenome.Hsapiens.UCSC.hg19)
 #'
 #' seqinfo(ProteoDiscographyExample.hg19)
 #'
@@ -70,9 +109,9 @@ setGeneric('seqinfo', function(x) standardGeneric("seqinfo"))
 #' @param x (ProteoDiscography): ProteoDiscography object.
 #' @examples
 #'
-#' # Import example ProteoDiscography (hg19) and re-link TxDb.
 #' data('ProteoDiscographyExample.hg19', package = 'ProteoDisco')
-#' ProteoDiscographyExample.hg19@TxDb <- TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene
+#' ProteoDiscographyExample.hg19 <- setTxDb(ProteoDiscographyExample.hg19, TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene)
+#' ProteoDiscographyExample.hg19 <- setGenomicSequences(ProteoDiscographyExample.hg19, BSgenome.Hsapiens.UCSC.hg19::BSgenome.Hsapiens.UCSC.hg19)
 #'
 #' seqlevels(ProteoDiscographyExample.hg19)
 #'
@@ -85,9 +124,10 @@ setGeneric('seqlevels', function(x) standardGeneric("seqlevels"))
 #' @param object (ProteoDiscography): ProteoDiscography object.
 #' @examples
 #'
-#' # Import example ProteoDiscography (hg19) and re-link TxDb.
+#' # Import example ProteoDiscography (hg19)
 #' data('ProteoDiscographyExample.hg19', package = 'ProteoDisco')
-#' ProteoDiscographyExample.hg19@TxDb <- TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene
+#' ProteoDiscographyExample.hg19 <- setTxDb(ProteoDiscographyExample.hg19, TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene)
+#' ProteoDiscographyExample.hg19 <- setGenomicSequences(ProteoDiscographyExample.hg19, BSgenome.Hsapiens.UCSC.hg19::BSgenome.Hsapiens.UCSC.hg19)
 #'
 #' organism(ProteoDiscographyExample.hg19)
 #'
@@ -100,9 +140,10 @@ setGeneric('organism', function(object) standardGeneric("organism"))
 #' @param x (ProteoDiscography): ProteoDiscography object.
 #' @examples
 #'
-#' # Import example ProteoDiscography (hg19) and re-link TxDb.
+#' # Import example ProteoDiscography (hg19)
 #' data('ProteoDiscographyExample.hg19', package = 'ProteoDisco')
-#' ProteoDiscographyExample.hg19@TxDb <- TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene
+#' ProteoDiscographyExample.hg19 <- setTxDb(ProteoDiscographyExample.hg19, TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene)
+#' ProteoDiscographyExample.hg19 <- setGenomicSequences(ProteoDiscographyExample.hg19, BSgenome.Hsapiens.UCSC.hg19::BSgenome.Hsapiens.UCSC.hg19)
 #'
 #' # Retrieve the imported records.
 #' getDiscography(ProteoDiscographyExample.hg19)
@@ -124,9 +165,10 @@ setGeneric('getDiscography', function(x) standardGeneric("getDiscography"))
 #' # ProteoDisco::setMutantTranscripts(ProteoDiscography)$spliceJunctions[1:10], slotType = 'spliceJunctions')
 #' # ProteoDisco::setMutantTranscripts(ProteoDiscography)$manualSequences[1:10], slotType = 'manualSequences')
 #'
-#' # Import example ProteoDiscography (hg19) and re-link TxDb.
+#' # Import example ProteoDiscography (hg19)
 #' data('ProteoDiscographyExample.hg19', package = 'ProteoDisco')
-#' ProteoDiscographyExample.hg19@TxDb <- TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene
+#' ProteoDiscographyExample.hg19 <- setTxDb(ProteoDiscographyExample.hg19, TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene)
+#' ProteoDiscographyExample.hg19 <- setGenomicSequences(ProteoDiscographyExample.hg19, BSgenome.Hsapiens.UCSC.hg19::BSgenome.Hsapiens.UCSC.hg19)
 #'
 #' # Only keep the first ten records.
 #' ProteoDiscographyExample.hg19 <- ProteoDisco::setMutantTranscripts(
@@ -145,9 +187,10 @@ setGeneric("setMutantTranscripts", function(x, transcripts, slotType) standardGe
 #'
 #' @examples
 #'
-#' # Import example ProteoDiscography (hg19) and re-link TxDb.
+#' # Import example ProteoDiscography (hg19)
 #' data('ProteoDiscographyExample.hg19', package = 'ProteoDisco')
-#' ProteoDiscographyExample.hg19@TxDb <- TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene
+#' ProteoDiscographyExample.hg19 <- setTxDb(ProteoDiscographyExample.hg19, TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene)
+#' ProteoDiscographyExample.hg19 <- setGenomicSequences(ProteoDiscographyExample.hg19, BSgenome.Hsapiens.UCSC.hg19::BSgenome.Hsapiens.UCSC.hg19)
 #'
 #' # Retrieve all generated mutant transcripts.
 #' mutantTranscripts(ProteoDiscographyExample.hg19)
@@ -172,9 +215,10 @@ setGeneric("mutantTranscripts", function(x) standardGeneric("mutantTranscripts")
 #'
 #' @examples
 #'
-#' # Import example ProteoDiscography (hg19) and re-link TxDb.
+#' # Import example ProteoDiscography (hg19)
 #' data('ProteoDiscographyExample.hg19', package = 'ProteoDisco')
-#' ProteoDiscographyExample.hg19@TxDb <- TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene
+#' ProteoDiscographyExample.hg19 <- setTxDb(ProteoDiscographyExample.hg19, TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene)
+#' ProteoDiscographyExample.hg19 <- setGenomicSequences(ProteoDiscographyExample.hg19, BSgenome.Hsapiens.UCSC.hg19::BSgenome.Hsapiens.UCSC.hg19)
 #'
 #' # Results will now contain additional information about proteotypic fragments.
 #' # With a large TxDb, this can take a while.

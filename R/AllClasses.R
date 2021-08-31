@@ -12,11 +12,11 @@ setClassUnion("DNAStringSet_OR_BSgenome", c("DNAStringSet", "BSgenome"))
 #' ProteoDiscography
 #'
 #' @description An S4 object containing the reference genome sequences and gene-model annotations (TxDB).
-#' 
+#'
 #' This also stores genomic variants and splice-junctions from which mutant transcript sequences can be generated.
 #'
-#' @slot TxDb (\link[GenomicFeatures]{TxDb}): TxDb object containing the genomic and transcriptomic annotations.
-#' @slot genomeSeqs (\link[Biostrings]{DNAStringSet}): Genomic sequence of the respective genome.
+#' @slot TxDb (\link[GenomicFeatures]{TxDb}): TxDb object containing the genomic and transcript annotations.
+#' @slot genomeSeqs (\link[Biostrings]{DNAStringSet} or \link[BSgenome]{BSgenome}): Genomic sequence of the respective genome.
 #' @slot input.genomicVariants (\link[VariantAnnotation]{VRangesList}): Imported genomic variants (SNV, MNV and InDels).
 #' @slot input.spliceJunctions (DataFrame): Imported splice-junctions.
 #' @slot input.manualSequences (DataFrame): Imported manual sequences.
@@ -25,29 +25,29 @@ setClassUnion("DNAStringSet_OR_BSgenome", c("DNAStringSet", "BSgenome"))
 #' @slot mutantTranscripts.manualSequences (\link[tibble]{tibble}): Processed mutant mRNA sequences from manual input.
 #' @slot GENETIC_CODE (\link[Biostrings]{GENETIC_CODE_TABLE}): The genetic code table to be used during translation.
 #' @slot metadata (data.frame): Supplied data.frame.
-#' 
+#'
 #' @rdname ProteoDiscography
 #' @exportClass ProteoDiscography
 #' @author Job van Riet
 setClass(
   "ProteoDiscography", slots = methods::representation(
-    
+
     # TxDb and genomic sequences.
     TxDb = 'TxDb',
     genomeSeqs = 'DNAStringSet_OR_BSgenome',
-    
+
     # Stores the user-input.
     input.genomicVariants = 'VRangesList',
     input.spliceJunctions = 'tbl_df',
     input.manualSequences = 'DataFrame',
-    
+
     # Stores the mutant transcripts we generated, checked and cleaned.
     # We stores these as DataFrames with sample and mutational information and a DNAString containing the mutant Tx sequence.
     mutantTranscripts.genomicVariants = 'DataFrame',
     mutantTranscripts.spliceJunctions = 'DataFrame',
     mutantTranscripts.manualSequences = 'DataFrame',
     GENETIC_CODE = 'character',
-    
+
     # Stores additional information of the ProteoDiscography.
     metadata = 'data.frame'
   ),

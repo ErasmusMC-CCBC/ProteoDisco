@@ -27,13 +27,6 @@
 Overlaps the reference bases and positions with the given genome and check if all positions overlap and reports
 non-overlapping mutations.
 }
-\examples{
-
-# Import example ProteoDiscography (hg19)
-data('ProteoDiscographyExample.hg19', package = 'ProteoDisco')
-ProteoDiscographyExample.hg19@TxDb <- TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene
-
-}
 \author{
 Job van Riet \email{j.vanriet@erasmusmc.nl}
 

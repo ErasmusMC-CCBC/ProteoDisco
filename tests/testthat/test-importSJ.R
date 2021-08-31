@@ -2,9 +2,10 @@ context("Importing SJ")
 
 test_that("SJs are incorporated as expected", {
 
-  # Import example ProteoDiscography (hg19) and re-link TxDb.
+  # Import example ProteoDiscography (hg19)
   data('ProteoDiscographyExample.hg19', package = 'ProteoDisco')
-  ProteoDiscographyExample.hg19@TxDb <- TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene
+  ProteoDiscographyExample.hg19 <- ProteoDisco::setTxDb(ProteoDiscographyExample.hg19, TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene)
+  ProteoDiscographyExample.hg19 <- ProteoDisco::setGenomicSequences(ProteoDiscographyExample.hg19, BSgenome.Hsapiens.UCSC.hg19::BSgenome.Hsapiens.UCSC.hg19)
 
   files.Splicing <- c(
     system.file('extdata', 'spliceJunctions_pyQUILTS_chr22.bed', package = 'ProteoDisco')

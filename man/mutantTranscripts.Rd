@@ -17,9 +17,10 @@ Adds mutant transcript sequences to the ProteoDiscography in the appropriate slo
 }
 \examples{
 
-# Import example ProteoDiscography (hg19) and re-link TxDb.
+# Import example ProteoDiscography (hg19)
 data('ProteoDiscographyExample.hg19', package = 'ProteoDisco')
-ProteoDiscographyExample.hg19@TxDb <- TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene
+ProteoDiscographyExample.hg19 <- setTxDb(ProteoDiscographyExample.hg19, TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene)
+ProteoDiscographyExample.hg19 <- setGenomicSequences(ProteoDiscographyExample.hg19, BSgenome.Hsapiens.UCSC.hg19::BSgenome.Hsapiens.UCSC.hg19)
 
 # Retrieve all generated mutant transcripts.
 mutantTranscripts(ProteoDiscographyExample.hg19)

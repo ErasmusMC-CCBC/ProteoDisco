@@ -12,9 +12,9 @@ This also stores genomic variants and splice-junctions from which mutant transcr
 \section{Slots}{
 
 \describe{
-\item{\code{TxDb}}{(\link[GenomicFeatures]{TxDb}): TxDb object containing the genomic and transcriptomic annotations.}
+\item{\code{TxDb}}{(\link[GenomicFeatures]{TxDb}): TxDb object containing the genomic and transcript annotations.}
 
-\item{\code{genomeSeqs}}{(\link[Biostrings]{DNAStringSet}): Genomic sequence of the respective genome.}
+\item{\code{genomeSeqs}}{(\link[Biostrings]{DNAStringSet} or \link[BSgenome]{BSgenome}): Genomic sequence of the respective genome.}
 
 \item{\code{input.genomicVariants}}{(\link[VariantAnnotation]{VRangesList}): Imported genomic variants (SNV, MNV and InDels).}
 

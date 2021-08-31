@@ -7,12 +7,6 @@
 #' @param ignoreNonMatch (logical): Should non-matching reference anchors be ignored? These mutations will be removed.
 #' @param threads (integer): Number of threads.
 #'
-#' @examples
-#'
-#' # Import example ProteoDiscography (hg19)
-#' data('ProteoDiscographyExample.hg19', package = 'ProteoDisco')
-#' ProteoDiscographyExample.hg19@TxDb <- TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene
-#'
 #' @return (logical): Returns TRUE/FALSE if per given mutation based on matching position and base with the reference genome.
 #' @concept methods
 #' @keywords methods
