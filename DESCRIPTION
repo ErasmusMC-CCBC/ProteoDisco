@@ -1,7 +1,7 @@
 Package: ProteoDisco
 Type: Package
 Title: Generation of customized protein variant databases from genomic variants, splice-junctions and manual sequences
-Version: 0.99.9
+Version: 0.99.10
 Date: 2021-09-01
 Authors@R: c(
     person("Job", "van Riet", email = "jobvriet@gmail.com", role = c("cre")),
@@ -41,8 +41,8 @@ Suggests:
     AnnotationDbi (>= 1.54.1),
     BSgenome (>= 1.60.0),
     BSgenome.Hsapiens.UCSC.hg19 (>= 1.4.3),
-    BSgenome.Hsapiens.UCSC.hg38 (>= 1.4.3),
     BiocStyle (>= 2.20.1),
+    DelayedArray (>= 0.18.0),
     devtools (>= 2.4.2),
     knitr (>= 1.33),
     matrixStats (>= 0.59.0),
@@ -56,11 +56,9 @@ Suggests:
     rtracklayer (>= 1.52.0),
     seqinr (>= 4.2.8),
     stringr (>= 1.4.0),
-    DelayedArray (>= 0.18.0),
     reshape2 (>= 1.4.4),
     scales (>= 1.1.1),
     testthat (>= 3.0.3),
-    TxDb.Hsapiens.UCSC.hg19.knownGene (>= 3.2.2),
-    TxDb.Hsapiens.UCSC.hg38.knownGene (>= 3.13.0)
+    TxDb.Hsapiens.UCSC.hg19.knownGene (>= 3.2.2)
 VignetteBuilder: knitr
 Encoding: UTF-8

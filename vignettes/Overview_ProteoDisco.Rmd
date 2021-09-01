@@ -12,7 +12,6 @@ output: BiocStyle::html_document
 
 ```{r knitr_init, echo = FALSE, cache = FALSE, results = 'hide', warning=FALSE, message=FALSE}
 suppressPackageStartupMessages(library(knitr))
-suppressPackageStartupMessages(library(rmdformats))
 suppressPackageStartupMessages(library(plyr))
 suppressPackageStartupMessages(library(dplyr))
 suppressPackageStartupMessages(library(ggplot2))

@@ -7,22 +7,7 @@ test_that("SJs are incorporated as expected", {
   ProteoDiscographyExample.hg19 <- ProteoDisco::setTxDb(ProteoDiscographyExample.hg19, TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene)
   ProteoDiscographyExample.hg19 <- ProteoDisco::setGenomicSequences(ProteoDiscographyExample.hg19, BSgenome.Hsapiens.UCSC.hg19::BSgenome.Hsapiens.UCSC.hg19)
 
-  files.Splicing <- c(
-    system.file('extdata', 'spliceJunctions_pyQUILTS_chr22.bed', package = 'ProteoDisco')
-  )
-
-  # Import splice-junctions from BED or SJ,out.tab files into our ProteoDiscography.
-  ProteoDiscographyExample.hg19 <- ProteoDisco::importSpliceJunctions(
-    ProteoDiscography = ProteoDiscographyExample.hg19,
-    inputSpliceJunctions = files.Splicing,
-    # (Optional) Rename samples.
-    samples = 'pyQUILTS',
-    isTopHat = TRUE,
-    aggregateSamples = FALSE,
-    removeExisting = TRUE
-  )
-
-  # Or, import splice-junctions (even spanning different chromosomes) based on our format.
+  # Import splice-junctions (even spanning different chromosomes) based on our format.
   testSJ <- readr::read_tsv(system.file('extdata', 'validationSetSJ_hg19.txt', package = 'ProteoDisco')) %>%
     dplyr::select(sample, identifier, junctionA, junctionB)
 
@@ -31,7 +16,7 @@ test_that("SJs are incorporated as expected", {
     ProteoDiscography = ProteoDiscographyExample.hg19,
     inputSpliceJunctions = testSJ,
     # Append to existing SJ-input.
-    removeExisting = FALSE
+    removeExisting = TRUE
   )
 
   # Generate junction-models from non-canonical splice-junctions.
@@ -42,6 +27,6 @@ test_that("SJs are incorporated as expected", {
     threads = 1
   )
 
-  testthat::expect_equal(length(ProteoDisco::mutantTranscripts(ProteoDiscographyExample.hg19)$spliceJunctions$identifier), 70, info = "Should have 70 non-canonical splice-transcripts from the two sources")
+  testthat::expect_equal(length(ProteoDisco::mutantTranscripts(ProteoDiscographyExample.hg19)$spliceJunctions$identifier), 5, info = "Should have 5 non-canonical splice-transcripts.")
 
 })

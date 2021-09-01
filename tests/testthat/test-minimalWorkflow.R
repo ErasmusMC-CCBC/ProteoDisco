@@ -65,23 +65,3 @@ test_that("Min. import to export workflow", {
   testthat::expect_equal(object = list.files(pattern = "test.FASTA"), expected = character(0))
 
 })
-
-test_that("Duplicate sample is not allowed (or overwritten)", {
-
-  # Import example ProteoDiscography (hg19)
-  data('ProteoDiscographyExample.hg19', package = 'ProteoDisco')
-  ProteoDiscographyExample.hg19 <- ProteoDisco::setTxDb(ProteoDiscographyExample.hg19, TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene)
-  ProteoDiscographyExample.hg19 <- ProteoDisco::setGenomicSequences(ProteoDiscographyExample.hg19, BSgenome.Hsapiens.UCSC.hg19::BSgenome.Hsapiens.UCSC.hg19)
-
-  #Expect an error to pop due to duplicate samples and overwriteDuplicateSamples set to FALSE
-  testthat::expect_error(
-    ProteoDiscography.hg19 <- ProteoDisco::importGenomicVariants(
-      ProteoDiscographyExample.hg19,
-      system.file('extdata', 'validationSet_hg19.vcf', package = 'ProteoDisco'),
-      samplenames = 'Validation Set (GRCh37)',
-      ignoreNonMatch = TRUE,
-      overwriteDuplicateSamples = FALSE
-    )
-  )
-
-})
