@@ -233,9 +233,6 @@ ProteoDiscography.hg19 <- ProteoDisco::importGenomicVariants(
   files = files.muts, 
   # We can replace the original samples within the VCF with nicer names.
   samplenames = 'Validation Set (GRCh37)',
-  # Number of threads used for parallelization.
-  # We run samples sequentially and parallelize within (variant-wise multi-threading).
-  threads = 1, 
   # For illustration purposes, do not check the validity of the reference anchor.
   performAnchorCheck = FALSE
 )
@@ -336,7 +333,7 @@ ProteoDiscography.hg19 <- ProteoDisco::incorporateGenomicVariants(
   # If set to FALSE, throw an error and specify which CDS had overlapping mutations.
   ignoreOverlappingMutations = TRUE, 
   # Number of threads.
-  threads = 1
+  threads = 4
 )
 
 ```
@@ -432,7 +429,7 @@ ProteoDiscography.hg19 <- ProteoDisco::generateJunctionModels(
   # Should we skip known exon-exon junctions (in which both the acceptor and donor are located on known adjacent exons within the same transcript)
   skipCanonical = TRUE,
   # Perform on multiple threads (optional)
-  threads = 1
+  threads = 4
 )
 ```
 

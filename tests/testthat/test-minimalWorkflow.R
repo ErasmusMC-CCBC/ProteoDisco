@@ -39,7 +39,7 @@ test_that("Min. import to export workflow", {
     aggregateWithinExon = TRUE,
     aggregateWithinTranscript = FALSE,
     ignoreOverlappingMutations = TRUE,
-    threads = 1
+    threads = 4
   )
 
   # Missing two out of 28 at this point, as expected
@@ -52,7 +52,7 @@ test_that("Min. import to export workflow", {
     aggregateWithinExon = FALSE,
     aggregateWithinTranscript = FALSE,
     ignoreOverlappingMutations = TRUE,
-    threads = 1
+    threads = 4
   )
 
   # All 28 should be found.
