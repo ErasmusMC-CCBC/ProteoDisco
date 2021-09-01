@@ -1,13 +1,10 @@
 ---
 title: 'Overview of Proteodisco'
-date: '`r Sys.Date()`'
-author:
-- Job van Riet
-- Wesley van de Geer
-- Harmen van de Werken
+date: "`r BiocStyle::doc_date()`"
+author: "Job van Riet, Wesley van de Geer and Harmen van de Werken"
 vignette: >
   %\VignetteIndexEntry{Overview_Proteodisco}
-  %\VignetteEngine{knitr::knitr}
+  %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 package: 'ProteoDisco'
 output: BiocStyle::html_document
@@ -23,10 +20,6 @@ suppressPackageStartupMessages(library(reshape2))
 suppressPackageStartupMessages(library(scales))
 suppressPackageStartupMessages(library(AnnotationDbi))
 suppressPackageStartupMessages(library(ProteoDisco))
-```
-
-```{r setup, include = FALSE}
-knitr::opts_chunk$set(collapse = TRUE, comment = '#>')
 ```
 
 # Abstract
@@ -426,8 +419,8 @@ testSJ <- readr::read_tsv(system.file('extdata', 'validationSetSJ_hg19.txt', pac
 ProteoDiscography.hg19 <- ProteoDisco::importSpliceJunctions(
   ProteoDiscography = ProteoDiscography.hg19, 
   inputSpliceJunctions = testSJ, 
-  # Append to existing SJ-input.
-  removeExisting = FALSE
+  # Remove existing SJ-input.
+  removeExisting = TRUE
 )
 
 # Generate junction-models from non-canonical splice-junctions.
@@ -439,7 +432,7 @@ ProteoDiscography.hg19 <- ProteoDisco::generateJunctionModels(
   # Should we skip known exon-exon junctions (in which both the acceptor and donor are located on known adjacent exons within the same transcript)
   skipCanonical = TRUE,
   # Perform on multiple threads (optional)
-  threads = 20
+  threads = 1
 )
 ```
 
