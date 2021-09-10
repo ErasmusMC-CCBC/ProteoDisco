@@ -31,7 +31,7 @@ test_that("Min. import to export workflow", {
 
   # Incorporate genomic variants --------------------------------------------
 
-  testSetProteins_hg19 <- readr::read_csv(file = system.file("extdata", "Table1_testSetProteins.csv", package = "ProteoDisco"), show_col_types = FALSE) %>% dplyr::filter(Build == 'hg19')
+  testSetProteins_hg19 <- readr::read_csv(file = system.file("extdata", "validationSet_hg19_expectedResults.csv", package = "ProteoDisco"), show_col_types = FALSE)
 
   ProteoDiscography.hg19 <- ProteoDisco::incorporateGenomicVariants(
     ProteoDiscography = ProteoDiscography.hg19,

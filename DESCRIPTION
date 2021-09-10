@@ -1,8 +1,8 @@
 Package: ProteoDisco
 Type: Package
 Title: Generation of customized protein variant databases from genomic variants, splice-junctions and manual sequences
-Version: 0.99.10
-Date: 2021-09-01
+Version: 0.99.11
+Date: 2021-09-10
 Authors@R: c(
     person("Job", "van Riet", email = "jobvriet@gmail.com", role = c("cre")),
     person("Wesley", "van de Geer", email = "w.vandegeer@erasmusmc.nl", role = c("aut")),
@@ -36,7 +36,7 @@ Imports:
     tidyr (>= 1.1.3),
     VariantAnnotation (>= 1.36.0),
     XVector (>= 0.32.0),
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 Suggests: 
     AnnotationDbi (>= 1.54.1),
     BSgenome (>= 1.60.0),
