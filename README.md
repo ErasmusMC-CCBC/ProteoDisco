@@ -1,20 +1,18 @@
 # ProteoDisco
 
-![license](https://img.shields.io/badge/license-GPL--2-blue.svg) [![GitHub issues](https://img.shields.io/github/issues/ErasmusMC-CCBC/ProteoDisco.svg)]() ![rversion](https://img.shields.io/badge/R%20version-%3E4.1.0-lightgrey.svg)
+![license](https://img.shields.io/badge/license-GPL--3-blue.svg) [![GitHub issues](https://img.shields.io/github/issues/ErasmusMC-CCBC/ProteoDisco.svg)]() ![rversion](https://img.shields.io/badge/R%20version-%3E4.1.0-lightgrey.svg)
+
+# Introduction
 
 ProteoDisco is an R package to facilitate proteogenomics studies. 
 
 It houses functions to create customized (mutant) protein databases based on user-submitted genomic variants, splice-junctions, fusion genes and manual transcript sequences.
 The flexible workflow can be adopted to suit a myriad of research and experimental settings.
 
-## Reference
+## Citations
 
-van de Geer and van Riet et al. in <JOURNAL> (2021): [TITLE](https://www.google.com/).
+van de Geer, van Riet and van de Werken: [ProteoDisco: A flexible R approach to generate customized protein databases for extended search space of novel and variant proteins in proteogenomic studies (2021)](https://www.biorxiv.org/content/10.1101/2021.09.17.460755v1).
 
-
-# Table of Contents
-1. [Installation](#markdown-header-installation)
-2. [Usage](#markdown-header-usage)
 
 # Installation
 
