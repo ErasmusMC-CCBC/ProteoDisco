@@ -317,14 +317,14 @@ incorporateGenomicVariants <- function(ProteoDiscography, aggregateSamples = FAL
 
         # Mutant sequence of current CDS.
         mutCDS <- S4Vectors::unique(mutantCDS.currentSample.currentTx$CDS.SequenceMut)
-        names(mutCDS) <- S4Vectors::unique(mutantCDS.currentSample.currentTx$CDS.ID)
+        base::names(mutCDS) <- S4Vectors::unique(mutantCDS.currentSample.currentTx$CDS.ID)
 
         # If only a single CDS per exon can be replaced.
         if(aggregateWithinExon & base::any(!base::duplicated(mutantCDS.currentSample.currentTx$CDS.ID))){
 
           # Replace WT to Mutant Seq.
           index <- which(base::names(Tx.CDS.Current.SequenceWT.tmp) %in% mutantCDS.currentSample$CDS.ID)
-          Tx.CDS.Current.SequenceWT.tmp[index] <- mutCDS[names(Tx.CDS.Current.SequenceWT.tmp[index])]
+          Tx.CDS.Current.SequenceWT.tmp[index] <- mutCDS[base::names(Tx.CDS.Current.SequenceWT.tmp[index])]
 
           # Concatenate the CDS together into the full-length RNA-transcript.
           mutTx <- Biostrings::DNAStringSet(Biostrings::xscat(base::unlist(Tx.CDS.Current.SequenceWT.tmp)))
@@ -459,7 +459,7 @@ incorporateGenomicVariants <- function(ProteoDiscography, aggregateSamples = FAL
   allUTRs <- GenomicFeatures::threeUTRsByTranscript(ProteoDiscography@TxDb, use.names = FALSE)
 
   # Subset overlapping Tx.
-  allUTRs <- base::unlist(allUTRs[names(allUTRs) %in% unique(mutantTx.allSamples$Tx.ID)])
+  allUTRs <- base::unlist(allUTRs[base::names(allUTRs) %in% base::unique(mutantTx.allSamples$Tx.ID)])
   allUTRs$Tx.ID <- base::names(allUTRs)
   allUTRs$strand <- BiocGenerics::strand(allUTRs)
 
