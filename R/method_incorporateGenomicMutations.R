@@ -144,7 +144,7 @@ incorporateGenomicVariants <- function(ProteoDiscography, aggregateSamples = FAL
 
         # Remove self-hits which only overlap with themselves, i.e. 1 overlap count.
         selfHits <- IRanges::countOverlaps(mutsPerCDS.GRanges.Reduced, mutsPerCDS.GRanges, minoverlap = 1)
-        selfHits <- which(selfHits == 1)
+        selfHits <- base::which(selfHits == 1)
         if(length(selfHits) > 0) overlappingMutsWithinCDS <- overlappingMutsWithinCDS[S4Vectors::subjectHits(overlappingMutsWithinCDS) != selfHits,]
 
         # Determine number of overlapping mutations.
@@ -206,7 +206,9 @@ incorporateGenomicVariants <- function(ProteoDiscography, aggregateSamples = FAL
         if(base::any(mutsPerCDS$relativeCDSStart < 1)){
           id <- mutsPerCDS$relativeCDSStart < 1
           mutsPerCDS[id,]$refCDS <- XVector::subseq(mutsPerCDS[id,]$refCDS, start = abs(mutsPerCDS[id,]$relativeCDSStart) + 2, end = base::nchar(mutsPerCDS[id,]$refCDS))
-          mutsPerCDS[id,]$refAlt <- XVector::subseq(mutsPerCDS[id,]$refAlt, start = abs(mutsPerCDS[id,]$relativeCDSStart) + 2, end = base::nchar(mutsPerCDS[id,]$refAlt))
+          
+          # If it's an Indel, it should remove the reference bases if it does not enter the CDS.
+          mutsPerCDS[id,]$refAlt <- ifelse(mutsPerCDS[id,]$mutationalType == 'InDel' & base::nchar(mutsPerCDS[id,]$ref) > mutsPerCDS[id,]$relativeCDSStart,  '', XVector::subseq(mutsPerCDS[id,]$refAlt, start = abs(mutsPerCDS[id,]$relativeCDSStart) + 2, end = base::nchar(mutsPerCDS[id,]$refAlt)))
           mutsPerCDS[id,]$relativeCDSStart <- 1
         }
 

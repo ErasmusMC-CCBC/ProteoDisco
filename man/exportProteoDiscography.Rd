@@ -14,7 +14,7 @@ exportProteoDiscography(
 \arguments{
 \item{ProteoDiscography}{(\link[ProteoDisco]{ProteoDiscography}): ProteoDiscography object which stores the annotation and genomic sequences.}
 
-\item{outFile}{(character): Filepath to output FASTA. If left NULL, it will return an AAStringSet with the given records.}
+\item{outFile}{(character): Filepath to output FASTA, will append the samplenames if aggregateSamples is FALSE. If left NULL, it will return an AAStringSet with the given records.}
 
 \item{minProteotypicFragments}{(integer): Only output mutant protein-isoforms from incorporated genomic variants with at least this many proteotypic fragments
 (if `checkProteotypicFragments()` was performed).}
