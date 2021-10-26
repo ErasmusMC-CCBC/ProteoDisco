@@ -1,7 +1,7 @@
 Package: ProteoDisco
 Type: Package
 Title: Generation of customized protein variant databases from genomic variants, splice-junctions and manual sequences
-Version: 1.0.0
+Version: 1.1.0
 Date: 2021-10-06
 Authors@R: c(
     person("Job", "van Riet", email = "jobvriet@gmail.com", role = c("cre")),
