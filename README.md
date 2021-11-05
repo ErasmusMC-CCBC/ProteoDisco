@@ -6,7 +6,7 @@
 
 ProteoDisco is an R package to facilitate proteogenomics studies. 
 
-It houses functions to create customized (mutant) protein databases based on user-submitted genomic variants, splice-junctions, fusion genes and manual transcript sequences.
+It houses functions to create customized (variant) protein databases based on user-submitted genomic variants, splice-junctions, fusion genes and manual transcript sequences.
 The flexible workflow can be adopted to suit a myriad of research and experimental settings.
 
 ## Citations

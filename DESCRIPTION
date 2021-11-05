@@ -2,15 +2,16 @@ Package: ProteoDisco
 Type: Package
 Title: Generation of customized protein variant databases from genomic variants, splice-junctions and manual sequences
 Version: 1.1.0
-Date: 2021-10-06
+Date: 2021-11-05
 Authors@R: c(
     person("Job", "van Riet", email = "jobvriet@gmail.com", role = c("cre")),
     person("Wesley", "van de Geer", email = "w.vandegeer@erasmusmc.nl", role = c("aut")),
     person("Harmen", "van de Werken", email = "h.vandewerken@erasmusmc.nl", role = c("ths")))
 biocViews: Software, Proteomics, RNASeq, SNP, Sequencing, VariantAnnotation, DataImport
-URL: https://github.com/ErasmusMC-CCBC/ProteoDisco,
+URL: https://github.com/ErasmusMC-CCBC/ProteoDisco
+BugReports: https://github.com/ErasmusMC-CCBC/ProteoDisco/issues
 Description: ProteoDisco is an R package to facilitate proteogenomics studies. 
-    It houses functions to create customized (mutant) protein databases based on user-submitted genomic variants, splice-junctions, fusion genes and manual transcript sequences.
+    It houses functions to create customized (variant) protein databases based on user-submitted genomic variants, splice-junctions, fusion genes and manual transcript sequences.
     The flexible workflow can be adopted to suit a myriad of research and experimental settings.
 License: GPL-3
 LazyData: FALSE
