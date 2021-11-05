@@ -39,7 +39,7 @@
 #' @author Job van Riet \email{j.vanriet@erasmusmc.nl}
 #' @author Wesley van de Geer \email{w.vandegeer@erasmusmc.nl}
 #' @import plyr
-#' @importFrom dplyr %>%
+#' @import dplyr
 #' @importFrom rlang .data
 #' @export
 incorporateGenomicVariants <- function(ProteoDiscography, aggregateSamples = FALSE, aggregateWithinExon = TRUE, aggregateWithinTranscript = TRUE, ignoreOverlappingMutations = TRUE, threads = 1) {

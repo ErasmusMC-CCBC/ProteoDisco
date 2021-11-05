@@ -100,7 +100,7 @@ generateJunctionModels <- function(ProteoDiscography, maxDistance = 150, maxCryp
 
     # Detect if junction overlaps with an existing CDS.
     junction.GR$cds_id <- IRanges::findOverlaps(junction.GR, TxDb.CDS, select = 'first', type = 'within', maxgap = 0, ignore.strand = FALSE)
-    if(any(!is.na(junction.GR$cds_id))) junction.GR[!is.na(junction.GR$cds_id),]$cdsType = 'Overlap'
+    if(any(!is.na(junction.GR$cds_id))) junction.GR[!is.na(junction.GR$cds_id),]$cdsType <- 'Overlap'
 
     # If no overlapping CDS is found, retrieve the nearest CDS.
     # Retrieve all adjacent CDS based on 5' -> 3' coordinates (i.e., in reverse for antisense genes).
@@ -114,8 +114,8 @@ generateJunctionModels <- function(ProteoDiscography, maxDistance = 150, maxCryp
     }
 
     # Annotate type of overlap.
-    junction.GR[is.na(junction.GR$cdsType) & !is.na(junction.GR$cds_id),]$cdsType = 'Nearest'
-    if(any(is.na(junction.GR$cds_id))) junction.GR[is.na(junction.GR$cds_id),]$cdsType = 'None'
+    junction.GR[is.na(junction.GR$cdsType) & !is.na(junction.GR$cds_id),]$cdsType <- 'Nearest'
+    if(any(is.na(junction.GR$cds_id))) junction.GR[is.na(junction.GR$cds_id),]$cdsType <- 'None'
 
     # Retrieve annotation of assigned CDS.
     junction.GR[!is.na(junction.GR$cds_id)]$chrDerivedCDS <- GenomeInfoDb::seqnames(junction.GR[!is.na(junction.GR$cds_id)])
