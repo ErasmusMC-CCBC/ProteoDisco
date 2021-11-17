@@ -18,9 +18,8 @@ setMethod('getDiscography', 'ProteoDiscography', function(x){
 
 })
 
-#' @rdname summary
-#' @exportMethod summary
-setMethod('summary', 'ProteoDiscography', function(object, verbose = TRUE){
+#' @export
+summary.ProteoDiscography <- function(object, verbose = TRUE, ...){
 
   ### Overview of imported mutations -----------------------------------------
 
@@ -75,7 +74,7 @@ setMethod('summary', 'ProteoDiscography', function(object, verbose = TRUE){
 
   # Information on the Discography samples.
   if(verbose) cat(sprintf('This ProteoDiscography was initialized on %s for %s (%s).\n',
-                          object@metadata$CreatedOn, unique(organism(object)),
+                          object@metadata$CreatedOn, unique(GenomeInfoDb::organism(object@TxDb)),
                           unique(GenomeInfoDb::genome(object@genomeSeqs))))
   if(verbose) cat(sprintf('The underlying TxDb contains %s transcripts with %s exons.\n',
                           meta.txdb[meta.txdb$name == 'transcript_nrow',]$value,
@@ -104,40 +103,18 @@ setMethod('summary', 'ProteoDiscography', function(object, verbose = TRUE){
 
   return(list(overviewMutations = sample.ImportedOverview))
 
-})
+}
 
-#' @rdname show
+#' @export
+print.ProteoDiscography <- function(x, ...){
+  return(summary(x, ...))
+}
+
 #' @exportMethod show
-setMethod('show', 'ProteoDiscography', function(object){
+setMethod("show", "ProteoDiscography", function(object) 
   return(summary(object))
-})
+)
 
-#' @rdname print
-#' @exportMethod print
-setMethod('print', 'ProteoDiscography', function(object){
-  return(summary(object))
-})
-
-#' @rdname seqinfo
-#' @exportMethod seqinfo
-setMethod('seqinfo', 'ProteoDiscography', function(x){
-  if(is.null(x@TxDb)) return('First add the TxDb to ProteoDiscography.')
-  return(GenomicFeatures::seqinfo(x@TxDb))
-})
-
-#' @rdname seqlevels
-#' @exportMethod seqlevels
-setMethod('seqlevels', 'ProteoDiscography', function(x){
-  if(is.null(x@TxDb)) return('First add the TxDb to ProteoDiscography.')
-  return(GenomeInfoDb::seqlevels(x@TxDb))
-})
-
-#' @rdname organism
-#' @exportMethod organism
-setMethod('organism', 'ProteoDiscography', function(object){
-  if(is.null(object@TxDb)) return('First add the TxDb to ProteoDiscography.')
-  return(GenomicFeatures::organism(object@TxDb))
-})
 
 # Setter methods ----------------------------------------------------------
 
