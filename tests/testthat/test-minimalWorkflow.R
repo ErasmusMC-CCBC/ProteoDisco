@@ -21,7 +21,7 @@ test_that("Min. import to export workflow", {
     threads = 1
   )
 
-  z <- ProteoDisco::summary(ProteoDiscography.hg19, verbose = FALSE)
+  z <- summary(ProteoDiscography.hg19, verbose = FALSE)
 
   testthat::expect_is(ProteoDiscography.hg19, "ProteoDiscography", info = "Should be ProteoDiscography object.")
   testthat::expect_equal(z$overviewMutations$InDel, 10, info = "Should have 10 accessible InDel variants.")

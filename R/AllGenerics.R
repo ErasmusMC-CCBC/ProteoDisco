@@ -1,20 +1,3 @@
-#' @title Display a summary of ProteoDiscography
-#' @param object (ProteoDiscography): ProteoDiscography object.
-#'
-#' @examples
-#'
-#' # Import example ProteoDiscography (hg19)
-#' data('ProteoDiscographyExample.hg19', package = 'ProteoDisco')
-#' ProteoDiscographyExample.hg19 <- setTxDb(ProteoDiscographyExample.hg19, TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene)
-#' ProteoDiscographyExample.hg19 <- setGenomicSequences(ProteoDiscographyExample.hg19, BSgenome.Hsapiens.UCSC.hg19::BSgenome.Hsapiens.UCSC.hg19)
-#'
-#' print(ProteoDiscographyExample.hg19)
-#'
-#' @return Displays information relating to the ProteoDiscography into the console.
-#' @rdname print
-#' @export
-setGeneric('print', function(object) standardGeneric("print"))
-
 # Internal setter methods.
 setGeneric('.setGenomicVariants', function(x, variants, removeExisting, overwriteDuplicateSamples) standardGeneric(".setGenomicVariants"))
 setGeneric('.setManualSequences', function(x, transcripts, removeExisting, overwriteDuplicateSamples) standardGeneric(".setManualSequences"))
@@ -54,87 +37,6 @@ setGeneric("setTxDb", function(x, TxDb) standardGeneric("setTxDb"))
 #' @rdname setGenomicSequences
 #' @export
 setGeneric("setGenomicSequences", function(x, genomeSeqs) standardGeneric("setGenomicSequences"))
-
-#' @title Display a summary of ProteoDiscography
-#' @param object (ProteoDiscography): ProteoDiscography object.
-#' @examples
-#'
-#' # Import example ProteoDiscography (hg19)
-#' data('ProteoDiscographyExample.hg19', package = 'ProteoDisco')
-#' ProteoDiscographyExample.hg19 <- setTxDb(ProteoDiscographyExample.hg19, TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene)
-#' ProteoDiscographyExample.hg19 <- setGenomicSequences(ProteoDiscographyExample.hg19, BSgenome.Hsapiens.UCSC.hg19::BSgenome.Hsapiens.UCSC.hg19)
-#'
-#' show(ProteoDiscographyExample.hg19)
-#'
-#' @return Displays information relating to the ProteoDiscography into the console.
-#' @rdname show
-#' @export
-setGeneric('show', function(object) standardGeneric("show"))
-
-#' @title Display a summary of ProteoDiscography
-#' @param object (ProteoDiscography): ProteoDiscography object.
-#' @param verbose (logical): Set the verbosity
-#' @examples
-#'
-#' # Import example ProteoDiscography (hg19)
-#' data('ProteoDiscographyExample.hg19', package = 'ProteoDisco')
-#' ProteoDiscographyExample.hg19 <- setTxDb(ProteoDiscographyExample.hg19, TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene)
-#' ProteoDiscographyExample.hg19 <- setGenomicSequences(ProteoDiscographyExample.hg19, BSgenome.Hsapiens.UCSC.hg19::BSgenome.Hsapiens.UCSC.hg19)
-#'
-#' summary(ProteoDiscographyExample.hg19)
-#'
-#' @return Displays information relating to the ProteoDiscography into the console.
-#' If verbose is set to TRUE, it will also output the imported genomic variants, splicing junctions and manual sequences as a list of tibbles.
-#' @rdname summary
-#' @export summary
-setGeneric('summary', function(object, verbose = TRUE) standardGeneric("summary"))
-
-#' @title Retrieve seqinfo.
-#' @param x (ProteoDiscography): ProteoDiscography object.
-#' @examples
-#'
-#' # Import example ProteoDiscography (hg19)
-#' data('ProteoDiscographyExample.hg19', package = 'ProteoDisco')
-#' ProteoDiscographyExample.hg19 <- setTxDb(ProteoDiscographyExample.hg19, TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene)
-#' ProteoDiscographyExample.hg19 <- setGenomicSequences(ProteoDiscographyExample.hg19, BSgenome.Hsapiens.UCSC.hg19::BSgenome.Hsapiens.UCSC.hg19)
-#'
-#' seqinfo(ProteoDiscographyExample.hg19)
-#'
-#' @return Returns an Seqinfo-class containing information on the imported genomic sequences.
-#' @rdname seqinfo
-#' @export
-setGeneric('seqinfo', function(x) standardGeneric("seqinfo"))
-
-#' @title Retrieve seqlevels.
-#' @param x (ProteoDiscography): ProteoDiscography object.
-#' @examples
-#'
-#' data('ProteoDiscographyExample.hg19', package = 'ProteoDisco')
-#' ProteoDiscographyExample.hg19 <- setTxDb(ProteoDiscographyExample.hg19, TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene)
-#' ProteoDiscographyExample.hg19 <- setGenomicSequences(ProteoDiscographyExample.hg19, BSgenome.Hsapiens.UCSC.hg19::BSgenome.Hsapiens.UCSC.hg19)
-#'
-#' seqlevels(ProteoDiscographyExample.hg19)
-#'
-#' @return seqlevels of the improted genomic sequences.
-#' @rdname seqlevels
-#' @export
-setGeneric('seqlevels', function(x) standardGeneric("seqlevels"))
-
-#' @title Display the organism of the TxDb
-#' @param object (ProteoDiscography): ProteoDiscography object.
-#' @examples
-#'
-#' # Import example ProteoDiscography (hg19)
-#' data('ProteoDiscographyExample.hg19', package = 'ProteoDisco')
-#' ProteoDiscographyExample.hg19 <- setTxDb(ProteoDiscographyExample.hg19, TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene)
-#' ProteoDiscographyExample.hg19 <- setGenomicSequences(ProteoDiscographyExample.hg19, BSgenome.Hsapiens.UCSC.hg19::BSgenome.Hsapiens.UCSC.hg19)
-#'
-#' organism(ProteoDiscographyExample.hg19)
-#'
-#' @return Returns the specified organism during creation.
-#' @rdname organism
-#' @export
-setGeneric('organism', function(object) standardGeneric("organism"))
 
 #' @title Retrieve imported genomic variants, splice-junctions and manual sequences.
 #' @param x (ProteoDiscography): ProteoDiscography object.
