@@ -11,7 +11,7 @@ The flexible workflow can be adopted to suit a myriad of research and experiment
 
 ## Citations
 
-van de Geer, van Riet and van de Werken: [ProteoDisco: A flexible R approach to generate customized protein databases for extended search space of novel and variant proteins in proteogenomic studies (2021)](https://www.biorxiv.org/content/10.1101/2021.09.17.460755v1).
+van de Geer, van Riet and van de Werken: [ProteoDisco: A flexible R approach to generate customized protein databases for extended search space of novel and variant proteins in proteogenomic studies (2021)](https://doi.org/10.1093/bioinformatics/btab809).
 
 
 # Installation
