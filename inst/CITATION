@@ -2,9 +2,9 @@ citHeader("To cite ProteoDisco in publications use:")
 
 citEntry(
   entry    = "article",
-  author   = personList(as.person("Wesley S.","van de Geer"),
-				as.person("Job","van Riet"),
-				as.person("Harmen J. G.","van de Werken")),
+  author   = personList(as.person("Wesley S. van de Geer"),
+				as.person("Job van Riet"),
+				as.person("Harmen J. G. van de Werken")),
   title    = "ProteoDisco: A flexible R approach to generate customized protein databases for extended search space of novel and variant proteins in proteogenomic studies",
   journal  = "Bioinformatics",
   year     = "2021",
