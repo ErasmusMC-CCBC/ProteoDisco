@@ -7,7 +7,7 @@ citEntry(
 				as.person("Harmen J. G. van de Werken")),
   title    = "ProteoDisco: A flexible R approach to generate customized protein databases for extended search space of novel and variant proteins in proteogenomic studies",
   journal  = "Bioinformatics",
-  year     = "2021",
+  year     = "2022",
   volume   = "38",
   number   = "5",
   pages =  "1437-1439",
