@@ -2,7 +2,7 @@ citHeader("To cite ProteoDisco in publications use:")
 
 citEntry(
   entry    = "article",
-  author   = personList(as.person("Wesley S.","van de Geer")
+  author   = personList(as.person("Wesley S.","van de Geer"),
 				as.person("Job","van Riet"),
 				as.person("Harmen J. G.","van de Werken")),
   title    = "ProteoDisco: A flexible R approach to generate customized protein databases for extended search space of novel and variant proteins in proteogenomic studies",
@@ -13,5 +13,5 @@ citEntry(
   pages =  "1437-1439",
   doi = "10.1093/bioinformatics/btab809",
   url = "https://doi.org/10.1093/bioinformatics/btab809",
-  textVersion = "Wesley S. van de Geer, Job van Riet, Harmen J. G. van de Werken (2021): ProteoDisco: A flexible R approach to generate customized protein databases for extended search space of novel and variant proteins in proteogenomic studies. Bioinformatics 38(5), 1437–1439 (2021); doi:10.1093/bioinformatics/btab809"
+  textVersion = "Wesley S. van de Geer, Job van Riet, Harmen J. G. van de Werken: ProteoDisco: A flexible R approach to generate customized protein databases for extended search space of novel and variant proteins in proteogenomic studies. Bioinformatics 38(5), 1437–1439 (2022); doi:10.1093/bioinformatics/btab809"
 )
