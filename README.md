@@ -20,10 +20,9 @@ The latest development version can be installed directly from GitHub:
 ```R
 # Require/install devtools package if not already installed.
 if (!require("devtools")) install.packages("devtools", repos = "http://cran.r-project.org")
-# Install ProteoDisco from BitBucket
-devtools::install_github(repo = "ErasmusMC-CCBC/ProteoDisco")
 
-# Download all required packages
+# Install ProteoDisco from GitHub.
+devtools::install_github(repo = "ErasmusMC-CCBC/ProteoDisco")
 library(ProteoDisco)
 ```
 
