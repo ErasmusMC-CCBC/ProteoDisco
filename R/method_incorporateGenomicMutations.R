@@ -130,7 +130,7 @@ incorporateGenomicVariants <- function(ProteoDiscography, aggregateSamples = FAL
       ParallelLogger::logTrace(sprintf('\t\t\tWorking on CDS: %s (%s)', base::unique(mutsPerCDS$CDSID), base::unique(mutsPerCDS$sample)))
 
       # Add rownames as column to use for filtering purposes.
-      mutsPerCDS <- mutsPerCDS %>% tibble::rownames_to_column()
+      mutsPerCDS <- tibble::rownames_to_column(mutsPerCDS)
 
       # Determine overlapping mutations and give appropriate response.
       if(aggregateWithinExon){
@@ -208,7 +208,17 @@ incorporateGenomicVariants <- function(ProteoDiscography, aggregateSamples = FAL
           mutsPerCDS[id,]$refCDS <- XVector::subseq(mutsPerCDS[id,]$refCDS, start = abs(mutsPerCDS[id,]$relativeCDSStart) + 2, end = base::nchar(mutsPerCDS[id,]$refCDS))
           
           # If it's an Indel, it should remove the reference bases if it does not enter the CDS.
-          mutsPerCDS[id,]$refAlt <- ifelse(mutsPerCDS[id,]$mutationalType == 'InDel' & base::nchar(mutsPerCDS[id,]$ref) > mutsPerCDS[id,]$relativeCDSStart,  '', XVector::subseq(mutsPerCDS[id,]$refAlt, start = abs(mutsPerCDS[id,]$relativeCDSStart) + 2, end = base::nchar(mutsPerCDS[id,]$refAlt)))
+          if(mutsPerCDS[id,]$mutationalType == 'InDel' & base::nchar(mutsPerCDS[id,]$ref) > mutsPerCDS[id,]$relativeCDSStart){
+              mutsPerCDS[id,]$refAlt <- ''
+          }else{
+              # Check for MNVs which started before the CDS and deletes the entire CDS.
+              if(abs(mutsPerCDS[id,]$relativeCDSStart) + 2 > base::nchar(mutsPerCDS[id,]$refAlt)){
+                  mutsPerCDS[id,]$refAlt <- ''
+              }else{
+                  mutsPerCDS[id,]$refAlt <- XVector::subseq(mutsPerCDS[id,]$refAlt, start = abs(mutsPerCDS[id,]$relativeCDSStart) + 2, end = base::nchar(mutsPerCDS[id,]$refAlt))
+              }
+          }
+          
           mutsPerCDS[id,]$relativeCDSStart <- 1
         }
 
