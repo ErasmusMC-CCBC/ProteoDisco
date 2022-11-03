@@ -328,7 +328,7 @@ incorporateGenomicVariants <- function(ProteoDiscography, aggregateSamples = FAL
         Tx.CDS.Current.SequenceWT.tmp <- Tx.CDS.Current.SequenceWT
 
         # Mutant sequence of current CDS.
-        mutCDS <- S4Vectors::unique(mutantCDS.currentSample.currentTx$CDS.SequenceMut)
+        mutCDS <- mutantCDS.currentSample.currentTx[mutantCDS.currentSample.currentTx$CDS.ID %in% S4Vectors::unique(mutantCDS.currentSample.currentTx$CDS.ID), ]$CDS.SequenceMut
         base::names(mutCDS) <- S4Vectors::unique(mutantCDS.currentSample.currentTx$CDS.ID)
 
         # If only a single CDS per exon can be replaced.
