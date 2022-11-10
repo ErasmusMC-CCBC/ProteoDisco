@@ -112,7 +112,7 @@ incorporateGenomicVariants <- function(ProteoDiscography, aggregateSamples = FAL
 
     # Generate tibble containing unique mutation:exon pairs.
     allMuts.PerSample$CDSID <- base::vapply(allMuts.PerSample$CDSID, paste0, collapse = ',', FUN.VALUE = c(''))
-    allMuts.separatedOnCDS <- allMuts.PerSample %>% tidyr::separate_rows(.data$CDSID)
+    allMuts.separatedOnCDS <- allMuts.PerSample %>% tidyr::separate_rows(CDSID)
 
     # Get all relevant CDS.
     allCDS <- GenomicFeatures::cds(ProteoDiscography@TxDb, filter = list(cds_id = unique(allMuts.separatedOnCDS$CDSID)))
